@@ -16,7 +16,7 @@ function Pilula({ icon, label }: HeroPilula) {
 
 export function Hero(props: HeroProps) {
   return (
-    <section className="relative overflow-hidden bg-section-dark-bg pb-16 pt-24 text-section-dark-fg sm:pt-28 md:pb-24">
+    <section className="relative overflow-hidden bg-section-dark-bg pb-16 pt-24 text-section-dark-fg sm:pt-28 md:min-h-[88vh] md:pb-0 md:pt-28">
       {/* Glow radial vermelho atrás do apresentador */}
       <div
         aria-hidden
@@ -37,32 +37,31 @@ export function Hero(props: HeroProps) {
         }}
       />
 
-      <div className="relative mx-auto grid w-full max-w-6xl gap-10 px-5 sm:px-8 md:grid-cols-12 md:gap-6">
+      <div className="relative mx-auto grid w-full max-w-6xl items-end gap-10 px-5 sm:px-8 md:grid-cols-12 md:gap-6">
         {/* Coluna texto */}
-        <div className="md:col-span-7 md:pr-6">
+        <div className="md:col-span-6 md:pb-16 md:pr-4 md:pt-4">
           <span className="inline-block rounded-pill border border-red-accent/40 bg-red-accent/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-red-accent">
             {props.badge}
           </span>
-          <h1 className="mt-5 font-display text-[clamp(2rem,5.2vw,3.6rem)] font-semibold leading-[1.05] text-section-dark-fg">
+          <h1 className="mt-5 font-display font-semibold leading-[1.05] text-section-dark-fg text-[clamp(2rem,5.2vw,3.6rem)] md:mt-4 md:text-[clamp(1.75rem,4vw,2.9rem)]">
             {props.h1}
           </h1>
-          <p className="mt-5 text-base leading-relaxed text-section-dark-fg/85 sm:text-[17px]">
+          <p className="mt-5 text-base leading-relaxed text-section-dark-fg/85 sm:text-[17px] md:mt-4 md:text-[15px] md:leading-[1.55]">
             {props.subtitulo}
           </p>
-          <p className="mt-4 text-base leading-relaxed text-section-dark-fg/70 sm:text-[17px]">
+          <p className="mt-4 text-base leading-relaxed text-section-dark-fg/70 sm:text-[17px] md:mt-3 md:text-[15px] md:leading-[1.55]">
             {props.apoio}
           </p>
 
           <a
             href={CHECKOUT_URL}
-            className="mt-7 inline-flex min-h-[52px] items-center justify-center gap-2 rounded-cta bg-red-primary px-6 text-sm font-bold uppercase tracking-wide text-on-red shadow-lg shadow-red-deep/40 transition-colors hover:bg-red-primary-hover"
+            className="mt-7 inline-flex min-h-[52px] items-center justify-center gap-2 rounded-cta bg-red-primary px-6 text-sm font-bold uppercase tracking-wide text-on-red shadow-lg shadow-red-deep/40 transition-colors hover:bg-red-primary-hover md:mt-5"
           >
             <Ticket className="h-4 w-4" aria-hidden />
             {props.cta}
           </a>
-          <p className="mt-3 text-xs text-section-dark-fg/60">{props.microtexto}</p>
 
-          <ul className="mt-8 flex flex-wrap gap-2">
+          <ul className="mt-8 flex flex-wrap gap-2 md:mt-6">
             {props.pilulas.map((p) => (
               <li key={p.label}>
                 <Pilula {...p} />
@@ -72,8 +71,8 @@ export function Hero(props: HeroProps) {
         </div>
 
         {/* Coluna imagem */}
-        <div className="relative md:col-span-5">
-          <div className="relative mx-auto aspect-[9/16] w-full max-w-[420px] md:max-w-none">
+        <div className="relative md:col-span-6 md:mr-[calc(50%-50vw)] md:self-end">
+          <div className="relative mx-auto aspect-[9/16] w-full max-w-[420px] md:max-w-none md:ml-auto md:aspect-auto md:h-[82vh]">
             <img
               src={props.imagem.src}
               width={props.imagem.width}
@@ -82,13 +81,13 @@ export function Hero(props: HeroProps) {
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              className="absolute inset-0 h-full w-full object-contain object-bottom"
+              className="absolute inset-0 h-full w-full object-contain object-right-bottom md:object-bottom"
               style={{
                 WebkitMaskImage:
-                  "linear-gradient(to left, black 72%, transparent 100%), linear-gradient(to top, black 88%, transparent 100%)",
+                  "linear-gradient(to left, black 82%, transparent 100%), linear-gradient(to bottom, black 78%, transparent 100%)",
                 WebkitMaskComposite: "source-in",
                 maskImage:
-                  "linear-gradient(to left, black 72%, transparent 100%), linear-gradient(to top, black 88%, transparent 100%)",
+                  "linear-gradient(to left, black 82%, transparent 100%), linear-gradient(to bottom, black 78%, transparent 100%)",
                 maskComposite: "intersect",
               }}
             />

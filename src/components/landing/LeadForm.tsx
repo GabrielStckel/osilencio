@@ -59,7 +59,7 @@ export function LeadForm({ variante, cta }: Props) {
   }
 
   const inputBase =
-    "w-full rounded-md border border-white/15 bg-black/40 px-4 py-3 text-base text-section-dark-fg placeholder:text-section-dark-fg/40 focus:border-red-accent focus:outline-none";
+    "w-full rounded-md border border-white/15 bg-black/40 px-4 py-3 text-base text-section-dark-fg placeholder:text-section-dark-fg/40 outline-none transition-colors focus:border-red-accent focus:ring-2 focus:ring-red-accent/40";
 
   return (
     <form onSubmit={onSubmit} noValidate className="space-y-4">

@@ -1,7 +1,24 @@
+import { Check } from "lucide-react";
 import type { SectionOfertaForm as Props, Variante } from "@/content/landing.types";
 import { LeadForm } from "./LeadForm";
 import { Reveal } from "./Reveal";
 import { SectionShell } from "./SectionShell";
+
+function Preco({ valor }: { valor: string }) {
+  // Espera formato "R$ 47,00"
+  const match = valor.match(/^(R\$)\s*(\d+)([.,]\d{2})?$/);
+  if (!match) {
+    return <span className="font-display text-5xl font-bold text-red-accent">{valor}</span>;
+  }
+  const [, moeda, inteiro, centavos] = match;
+  return (
+    <span className="inline-flex items-start font-display text-red-accent">
+      <span className="mt-2 text-2xl font-semibold">{moeda}</span>
+      <span className="ml-1 text-6xl font-bold leading-none md:text-7xl">{inteiro}</span>
+      {centavos && <span className="mt-2 text-2xl font-semibold">{centavos}</span>}
+    </span>
+  );
+}
 
 export function SectionOfertaForm({
   section,
@@ -10,35 +27,55 @@ export function SectionOfertaForm({
   section: Props;
   variante: Variante;
 }) {
+  const inclui = [section.cardOferta.inclui].filter(Boolean);
   return (
     <SectionShell fundo={section.fundo} id="inscricao">
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
-          <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] font-semibold leading-tight">
+          <h2 className="font-display font-semibold leading-tight text-[clamp(2rem,4.5vw,2.75rem)]">
             {section.titulo}
           </h2>
         </Reveal>
       </div>
 
-      <div className="mx-auto mt-10 grid max-w-4xl gap-6 md:grid-cols-2">
+      <div className="mx-auto mt-12 grid max-w-4xl gap-6 md:mt-16 md:grid-cols-2 md:gap-10">
         <Reveal>
-          <article className="h-full rounded-lg border border-red-accent/40 bg-surface-dark/70 p-6 sm:p-7">
-            <p className="text-xs font-semibold uppercase tracking-widest text-red-accent">
+          <article className="relative h-full rounded-xl border-2 border-red-accent/60 bg-surface-dark/70 p-7 shadow-2xl shadow-red-deep/40 sm:p-8">
+            <span className="absolute -top-3 left-6 inline-flex items-center rounded-pill bg-red-accent px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-on-red shadow-md shadow-red-deep/50">
               Oferta
-            </p>
+            </span>
             <h3 className="mt-2 font-display text-2xl leading-tight">
               {section.cardOferta.nome}
             </h3>
-            <p className="mt-6 font-display text-5xl font-bold text-red-accent">
-              {section.cardOferta.preco}
+
+            <div className="mt-6">
+              <Preco valor={section.cardOferta.preco} />
+              <p className="mt-1 text-xs uppercase tracking-widest opacity-60">
+                Pagamento único
+              </p>
+            </div>
+
+            {inclui.length > 0 && (
+              <ul className="mt-6 space-y-2.5">
+                {inclui.map((item) => (
+                  <li key={item} className="flex items-start gap-2.5 text-sm">
+                    <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-accent/20 text-red-accent">
+                      <Check className="h-3 w-3" aria-hidden />
+                    </span>
+                    <span className="opacity-90">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            <p className="mt-6 border-t border-white/10 pt-4 text-xs opacity-70">
+              {section.urgencia}
             </p>
-            <p className="mt-4 text-sm opacity-80">{section.cardOferta.inclui}</p>
-            <p className="mt-6 text-xs opacity-70">{section.urgencia}</p>
           </article>
         </Reveal>
 
         <Reveal>
-          <div className="rounded-lg border border-white/10 bg-black/30 p-6 sm:p-7">
+          <div className="rounded-xl border border-white/10 bg-black/40 p-6 sm:p-8">
             <LeadForm variante={variante} cta={section.cta} />
           </div>
         </Reveal>

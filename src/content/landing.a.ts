@@ -28,7 +28,7 @@ export const landingContentA: LandingContent = {
     pilulas: [
       { icon: "calendar", label: "2 noites ao vivo" },
       { icon: "monitor", label: "Direto no Zoom" },
-      { icon: "users", label: "Vagas limitadas a 150" },
+      { icon: "users", label: "Vagas limitadas" },
     ],
     imagem: {
       src: apresentador.url,

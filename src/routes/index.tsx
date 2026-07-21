@@ -1,13 +1,25 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Landing } from "@/components/landing/Landing";
+import { landingContentA } from "@/content/landing.a";
 
 export const Route = createFileRoute("/")({
-  component: Index,
+  component: IndexPage,
+  head: () => ({
+    meta: [
+      { title: landingContentA.meta.title },
+      { name: "description", content: landingContentA.meta.description },
+      { property: "og:title", content: landingContentA.meta.ogTitle },
+      { property: "og:description", content: landingContentA.meta.ogDescription },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: landingContentA.meta.canonicalPath },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: landingContentA.meta.ogTitle },
+      { name: "twitter:description", content: landingContentA.meta.ogDescription },
+    ],
+    links: [{ rel: "canonical", href: landingContentA.meta.canonicalPath }],
+  }),
 });
 
-function Index() {
-  return (
-    <main className="flex min-h-screen items-center justify-center bg-background text-foreground">
-      <h1 className="text-2xl font-medium">Projeto em construção</h1>
-    </main>
-  );
+function IndexPage() {
+  return <Landing content={landingContentA} />;
 }

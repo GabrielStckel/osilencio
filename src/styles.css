@@ -69,6 +69,7 @@
   --color-text-on-light: var(--text-on-light);
 
   --color-red-primary: var(--red-primary);
+  --color-red-primary-hover: var(--red-primary-hover);
   --color-red-accent: var(--red-accent);
   --color-red-deep: var(--red-deep);
   --color-on-red: var(--on-red);

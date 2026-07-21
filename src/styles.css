@@ -2,30 +2,35 @@
 @source "../src";
 @import "tw-animate-css";
 
+/* Fontes: apenas subset latin, apenas pesos usados */
+@import "@fontsource/playfair-display/latin-500.css";
+@import "@fontsource/playfair-display/latin-600.css";
+@import "@fontsource/playfair-display/latin-700.css";
+@import "@fontsource/inter/latin-400.css";
+@import "@fontsource/inter/latin-500.css";
+@import "@fontsource/inter/latin-600.css";
+
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * Design system — tokens.
+ * Identidade "O Silêncio": preto + branco + vermelho controlado.
+ * Página alterna seções escuras/claras/vermelhas — tokens semânticos abaixo.
+ * Base (:root) usa o conjunto ESCURO (página é majoritariamente escura).
  */
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
+  --radius-pill: var(--radius-pill);
+  --radius-cta: var(--radius-cta);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-body);
+  --font-body: var(--font-body);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -34,6 +39,7 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -46,92 +52,122 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-section-dark-bg: var(--section-dark-bg);
+  --color-section-dark-fg: var(--section-dark-fg);
+  --color-section-light-bg: var(--section-light-bg);
+  --color-section-light-fg: var(--section-light-fg);
+  --color-section-red-bg: var(--section-red-bg);
+  --color-section-red-fg: var(--section-red-fg);
+
+  --color-bg-black: var(--bg-black);
+  --color-surface-dark: var(--surface-dark);
+  --color-surface-light: var(--surface-light);
+  --color-border-dark: var(--border-dark);
+  --color-border-light: var(--border-light);
+  --color-text-on-dark: var(--text-on-dark);
+  --color-text-on-light: var(--text-on-light);
+
+  --color-red-primary: var(--red-primary);
+  --color-red-accent: var(--red-accent);
+  --color-red-deep: var(--red-deep);
+  --color-on-red: var(--on-red);
 }
 
-/* PROVISÓRIO — identidade visual será definida por prompt específico.
-   Paleta neutra: fundo quase-branco, texto quase-preto, accent cinza-médio. */
+/* Identidade "O Silêncio" — tokens crus.
+   Base escura (a página é majoritariamente escura). */
 :root {
-  --radius: 0.625rem;
-  --background: oklch(0.99 0 0);
-  --foreground: oklch(0.15 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.15 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0 0);
-  --primary: oklch(0.2 0 0);
-  --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.96 0 0);
-  --secondary-foreground: oklch(0.2 0 0);
-  --muted: oklch(0.96 0 0);
-  --muted-foreground: oklch(0.5 0 0);
-  --accent: oklch(0.6 0 0);
-  --accent-foreground: oklch(0.98 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.92 0 0);
-  --input: oklch(0.92 0 0);
-  --ring: oklch(0.7 0 0);
-  --chart-1: oklch(0.65 0 0);
-  --chart-2: oklch(0.55 0 0);
-  --chart-3: oklch(0.45 0 0);
-  --chart-4: oklch(0.75 0 0);
-  --chart-5: oklch(0.35 0 0);
-  --sidebar: oklch(0.98 0 0);
-  --sidebar-foreground: oklch(0.15 0 0);
-  --sidebar-primary: oklch(0.2 0 0);
-  --sidebar-primary-foreground: oklch(0.98 0 0);
-  --sidebar-accent: oklch(0.96 0 0);
-  --sidebar-accent-foreground: oklch(0.2 0 0);
-  --sidebar-border: oklch(0.92 0 0);
-  --sidebar-ring: oklch(0.7 0 0);
+  /* Tipografia */
+  --font-display: "Playfair Display", ui-serif, Georgia, serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Raio */
+  --radius: 0.75rem;              /* 12px */
+  --radius-pill: 999px;
+  --radius-cta: 4px;
+
+  /* Neutros — escuros */
+  --bg-dark: oklch(0.1508 0.0017 17.35);        /* #0C0B0B */
+  --bg-black: oklch(0 0 0);                     /* #000000 */
+  --surface-dark: oklch(0.2050 0.0064 17.69);   /* #1A1616 */
+  --border-dark: oklch(1 0 0 / 0.06);
+
+  /* Neutros — claros */
+  --bg-light: oklch(0.9853 0.0029 84.56);       /* #FBFAF8 */
+  --surface-light: oklch(1 0 0);                /* #FFFFFF */
+  --border-light: oklch(0 0 0 / 0.08);
+
+  /* Texto */
+  --text-on-dark: oklch(0.9538 0.0080 73.74);   /* #F3EFEA */
+  --text-on-light: oklch(0.1873 0.0102 52.83);  /* #17120F */
+  --text-muted-value: oklch(0.6067 0.0161 57.43); /* #8A8079 */
+
+  /* Vermelhos controlados */
+  --red-primary: oklch(0.5262 0.1842 27.69);    /* #BE2B26 */
+  --red-accent: oklch(0.5780 0.1909 27.26);     /* #D33A34 */
+  --red-deep: oklch(0.3975 0.1288 25.24);       /* #7E2020 */
+  --red-primary-hover: oklch(0.4749 0.1678 27.67); /* #A6231F */
+  --on-red: oklch(1 0 0);
+
+  /* Semânticos de seção */
+  --section-dark-bg: var(--bg-dark);
+  --section-dark-fg: var(--text-on-dark);
+  --section-light-bg: var(--bg-light);
+  --section-light-fg: var(--text-on-light);
+  --section-red-bg: var(--red-deep);
+  --section-red-fg: var(--on-red);
+
+  /* Base do tema (escuro por padrão) */
+  --background: var(--bg-dark);
+  --foreground: var(--text-on-dark);
+  --card: var(--surface-dark);
+  --card-foreground: var(--text-on-dark);
+  --popover: var(--surface-dark);
+  --popover-foreground: var(--text-on-dark);
+
+  --primary: var(--red-primary);
+  --primary-foreground: var(--on-red);
+  --primary-hover: var(--red-primary-hover);
+
+  --secondary: var(--surface-dark);
+  --secondary-foreground: var(--text-on-dark);
+
+  --muted: var(--surface-dark);
+  --muted-foreground: var(--text-muted-value);
+
+  --accent: var(--red-accent);
+  --accent-foreground: var(--on-red);
+
+  --destructive: var(--red-primary);
+  --destructive-foreground: var(--on-red);
+
+  --border: var(--border-dark);
+  --input: var(--border-dark);
+  --ring: var(--red-accent);
 }
 
+/* Modo claro explícito (para seções claras via classe .light se necessário).
+   Mantemos .dark coerente para não quebrar componentes shadcn. */
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --background: var(--bg-dark);
+  --foreground: var(--text-on-dark);
+  --card: var(--surface-dark);
+  --card-foreground: var(--text-on-dark);
+  --popover: var(--surface-dark);
+  --popover-foreground: var(--text-on-dark);
+  --primary: var(--red-primary);
+  --primary-foreground: var(--on-red);
+  --secondary: var(--surface-dark);
+  --secondary-foreground: var(--text-on-dark);
+  --muted: var(--surface-dark);
+  --muted-foreground: var(--text-muted-value);
+  --accent: var(--red-accent);
+  --accent-foreground: var(--on-red);
+  --destructive: var(--red-primary);
+  --destructive-foreground: var(--on-red);
+  --border: var(--border-dark);
+  --input: var(--border-dark);
+  --ring: var(--red-accent);
 }
 
 @layer base {
@@ -139,8 +175,24 @@
     border-color: var(--color-border);
   }
 
+  html {
+    font-family: var(--font-body);
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--red-accent);
+    outline-offset: 2px;
   }
 }

@@ -1,40 +1,69 @@
-## Setup inicial do projeto (landing page / funil)
+# Página A — Diagnóstica (rota `/`) + base reutilizável
 
-Executarei apenas o setup técnico da Seção 7 do prompt. Nenhuma página nova, nenhuma fonte, nenhuma dependência.
+## Objetivo
+Construir a landing "O Silêncio" na rota `/` (variante A) com **componentes reutilizáveis por props**, prontos para a variante B (`/1`) apenas trocar o conteúdo. Zero copy hardcoded dentro dos componentes.
 
-### 1. Knowledge permanente (memória do projeto)
-Gravarei as Seções 1–6 como regras permanentes em `mem://`:
-- `mem://index.md` — Core com regras universais curtas (português BR, escopo fechado, performance inegociável, tokens obrigatórios, formulários sempre persistem, ordem sagrada do lead, sem Google Fonts CDN, sem deps sem autorização) + referências para os arquivos detalhados.
-- `mem://preferences/postura.md` — Seções 1 e 2 (papel, postura, formato de resposta, regra do PageSpeed externo).
-- `mem://constraints/performance.md` — Seção 3 (fontes via @fontsource latin, LCP sem animação, imagens com dimensões, terceiros não-bloqueantes, sem backdrop-blur em sticky).
-- `mem://design/sistema.md` — Seção 4 (tokens obrigatórios, mobile-first 390–1440, toque ≥44px, texto ≥16px, semântica, acessibilidade).
-- `mem://features/funil-formularios.md` — Seção 5 (persistência obrigatória, ordem salvar→integrar→redirect, variantes A/B idênticas, checkboxes nunca pré-marcados, evento Pixel único, segredos server-side).
-- `mem://features/seo-publicacao.md` — Seção 6 (lang pt-BR, meta reais, favicon próprio como pendência até definido, checagem de placeholders antes de publicar).
+## Pré-requisitos (executar antes das seções)
+1. **Ativar Lovable Cloud** — obrigatório pela regra do funil ("nenhum formulário sem persistência"). Criar tabela `leads`:
+   - `id uuid pk`, `nome text`, `email text`, `whatsapp text`, `variante text check in ('A','B')`, `integracao_status text` (`pending|ok|failed|skipped`), `integracao_erro text null`, `created_at timestamptz default now()`
+   - RLS habilitada; policy `INSERT` para `anon` + `authenticated`; sem `SELECT` público. GRANTs `INSERT` para `anon, authenticated`, `ALL` para `service_role`.
+2. **Upload da imagem do hero** via `lovable-assets` a partir de `user-uploads://Design_sem_nome_10.png` → `src/assets/apresentador_final.png.asset.json` (CDN, com width/height reais lidos do arquivo).
+3. **Constante global** `CHECKOUT_URL = "#definir-checkout"` em `src/lib/config.ts` (única fonte usada por todos os CTAs).
 
-### 2. Tokens neutros provisórios
-`src/styles.css` já usa tokens (oklch) mapeados no `@theme inline`. Ajustarei apenas:
-- Trocar os valores atuais por uma paleta neutra provisória (fundo claro quase-branco, texto quase-preto, accent neutro cinza-médio), em oklch.
-- Comentar o bloco `:root` com `/* PROVISÓRIO — identidade será definida por prompt */`.
-- Manter estrutura de `@theme inline`, `.dark`, `@layer base` intactas (só valores mudam).
+## Arquitetura de conteúdo e componentes
 
-### 3. Limpeza da raiz
-`src/routes/index.tsx`: substituir o placeholder Lovable por uma página mínima:
-```tsx
-<main className="min-h-screen flex items-center justify-center bg-background text-foreground">
-  <h1 className="text-2xl font-medium">Projeto em construção</h1>
-</main>
-```
-Sem imagem, sem estilos hardcoded, apenas tokens.
+### Objeto de conteúdo (tipado)
+`src/content/landing.types.ts` — tipos: `LandingContent` com `meta`, `topbar`, `hero`, `sections[]` (união discriminada: `problema | cardsNumerados | listaVermelha | diferencial | checklist | comoFunciona | ofertaForm | faq | rodape`), `ctaBar`.
 
-### 4. Head global pt-BR
-`src/routes/__root.tsx`:
-- `<html lang="en">` → `<html lang="pt-BR">` no `RootShell`.
-- No `head()`: title `[DEFINIR]`, description `[DEFINIR]`, og:title/og:description `[DEFINIR]`, manter og:type, twitter:card, viewport, charSet. Estrutura pronta para og:url, canonical e og:image quando forem definidos em rotas leaf.
+`src/content/landing.a.ts` — instância com toda a copy da variante A do prompt.
 
-### 5. Não fazer
-- Não instalar `@fontsource/*` nem qualquer dependência.
-- Não criar novas rotas.
-- Não tocar em `src/routeTree.gen.ts`, router, server, lib de erros.
+### Componentes reutilizáveis (todos recebem props, sem texto hardcoded)
+- `src/components/landing/Topbar.tsx` — nome + badge calendário.
+- `src/components/landing/Hero.tsx` — 2 colunas, badge, h1, sub, apoio, CTA, 3 pílulas de logística, glow radial vermelho via CSS, `mask-image` na foto, `loading="eager"` + `fetchpriority="high"` + width/height. Único `<h1>` da página. **Zero animação acima da dobra.**
+- `src/components/landing/SectionShell.tsx` — wrapper que aplica tokens de seção (`dark|light|red`) via classes que consomem `--section-*-bg/fg`.
+- `src/components/landing/SectionProblema.tsx` (título + texto).
+- `src/components/landing/SectionCardsNumerados.tsx` (título + 4 cards com numeral 01–04 gigante atrás em `--red-accent` translúcido, ornamentos `+` nos cantos + texto de fechamento).
+- `src/components/landing/SectionListaVermelha.tsx` (fundo vermelho, título + itens com check + fechamento).
+- `src/components/landing/SectionDiferencial.tsx` (título + texto, fundo claro).
+- `src/components/landing/SectionChecklist.tsx` (título + checklist + fechamento).
+- `src/components/landing/SectionComoFunciona.tsx` (título + 3 cards + texto).
+- `src/components/landing/SectionOfertaForm.tsx` (card oferta + `LeadForm` + urgência).
+- `src/components/landing/SectionFaq.tsx` (título display gigante + acordeão com altura animada e botão +/− circular; um item aberto por vez).
+- `src/components/landing/Footer.tsx` (nome, CTA final, links placeholder, aviso).
+- `src/components/landing/CtaBar.tsx` — barra fixa no rodapé da viewport, fundo sólido (sem `backdrop-blur`), botão vermelho central. Detecta seção clara/escura via `IntersectionObserver` observando os `SectionShell` para ajustar opacidade sobre claro.
+- `src/components/landing/LeadForm.tsx` — Nome/E-mail/WhatsApp com `type`/`inputMode`/`autocomplete` corretos, `label` real por campo, validação pt-BR (Zod), botão com loading + `disabled`, guarda contra duplo submit, aria-live para erros.
+- `src/components/landing/Reveal.tsx` — wrapper com fade-in + translate-Y (uma vez) via `IntersectionObserver`. **Não aplicar em Topbar nem Hero.**
 
-### Entrega
-Ao final, resposta no formato da Seção 2: arquivos criados, arquivos alterados (1 linha cada) e pendências (favicon próprio, identidade visual, title/description reais, og:image, tabela de leads).
+### Lógica do lead (ordem sagrada)
+`src/lib/leads.functions.ts` — `createServerFn` `submitLead`:
+- `.inputValidator` Zod (nome, email, whatsapp, variante `'A'|'B'`)
+- `.handler`: 1) insere em `leads` com `integracao_status='pending'` via `supabaseAdmin` (carregado dentro do handler); 2) tenta integração externa se `LEAD_WEBHOOK_URL` presente (fetch com timeout curto); atualiza `integracao_status` para `ok|failed|skipped`; 3) retorna `{ ok: true, checkoutUrl: CHECKOUT_URL }`. **Falha externa nunca bloqueia** — sempre retorna `ok:true` se o insert deu certo. Cliente faz `window.location.href = checkoutUrl` só depois.
+
+### Rota `/`
+`src/routes/index.tsx` — importa `landingContentA`, define `head()` com title/description/og reais (título: "O Silêncio — Imersão de 2 Noites | Paz Mental de Verdade"), monta na ordem: Topbar → Hero → Problema → CardsNumerados → ListaVermelha → Diferencial → Checklist → ComoFunciona → OfertaForm → Faq → Footer + CtaBar fixa. Passa `variante="A"` no `LeadForm`.
+
+## Tokens/estilos (aditivos, não quebram nada)
+- Em `src/styles.css`, adicionar classes utilitárias mínimas para seções: `.section-dark`, `.section-light`, `.section-red` mapeadas aos tokens `--section-*-bg/fg` já definidos.
+- Nada de hex/font-family em componentes — só classes ligadas a tokens.
+
+## Performance (inegociável)
+- Hero: imagem com width/height reais, `loading="eager"`, `fetchpriority="high"`, sem `Reveal` acima da dobra.
+- Nenhuma dependência nova (nem animação, nem carrossel, nem ícone pesado). Ícones ficam com Lucide já disponível.
+- Fontes já resolvidas em passo anterior (@fontsource, subset latin).
+- Sem `backdrop-blur` na CTA bar. Glow do hero é gradiente radial CSS puro.
+
+## SEO
+- `head()` da rota `/`: title, description, og:title, og:description, og:type, twitter:card, canonical placeholder até termos domínio de produção. `og:image` fica pendente (URL absoluta só após publicar).
+- `html lang="pt-BR"` já está no `__root.tsx`.
+
+## Pendências que ficam abertas (documentar no fim)
+- `CHECKOUT_URL` real (hoje `#definir-checkout`).
+- `og:image` e `canonical` absolutos (após publicar).
+- Favicon próprio.
+- Integração externa (`LEAD_WEBHOOK_URL`) — hook pronto, secret a definir.
+- Respostas `[DEFINIR]` do FAQ 3 e 7 (replay/ausência).
+
+## Fora de escopo
+- Rota `/1` (variante B) — só na próxima etapa, reaproveitando 100% dos componentes com outro `landing.b.ts`.
+- Página de agradecimento/pós-checkout.
+- Testes automatizados.

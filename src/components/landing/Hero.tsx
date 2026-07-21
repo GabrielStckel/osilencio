@@ -43,7 +43,7 @@ export function Hero(props: HeroProps) {
           <span className="inline-block rounded-pill border border-red-accent/40 bg-red-accent/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-red-accent">
             {props.badge}
           </span>
-          <h1 className="mt-5 font-display font-semibold leading-[1.05] text-section-dark-fg text-[clamp(2rem,5.2vw,3.6rem)] md:mt-4 md:text-[clamp(1.75rem,4vw,2.9rem)]">
+          <h1 className="mt-5 font-display font-semibold leading-[1.05] text-section-dark-fg text-[clamp(2rem,5.2vw,3.6rem)] md:mt-4 md:text-[clamp(1.5rem,3.2vw,2.35rem)] md:leading-[1.1]">
             {props.h1}
           </h1>
           <p className="mt-5 text-base leading-relaxed text-section-dark-fg/85 sm:text-[17px] md:mt-4 md:text-[15px] md:leading-[1.55]">
@@ -84,11 +84,9 @@ export function Hero(props: HeroProps) {
               className="absolute inset-0 h-full w-full object-contain object-right-bottom md:object-bottom"
               style={{
                 WebkitMaskImage:
-                  "linear-gradient(to left, black 82%, transparent 100%), linear-gradient(to bottom, black 78%, transparent 100%)",
-                WebkitMaskComposite: "source-in",
+                  "linear-gradient(to bottom, black 0%, black 55%, transparent 100%)",
                 maskImage:
-                  "linear-gradient(to left, black 82%, transparent 100%), linear-gradient(to bottom, black 78%, transparent 100%)",
-                maskComposite: "intersect",
+                  "linear-gradient(to bottom, black 0%, black 55%, transparent 100%)",
               }}
             />
           </div>

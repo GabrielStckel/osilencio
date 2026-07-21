@@ -48,7 +48,7 @@ export const landingContentA: LandingContent = {
     {
       kind: "cardsNumerados",
       fundo: "dark",
-      titulo: "Você já tentou muita coisa. E nada resolveu.",
+      titulo: "Você já tentou muita coisa.\u00a0\nE nada resolveu.",
       cards: [
         "Meditação? Ajuda por um tempo, mas a mente volta.",
         "Terapia? Você entende melhor, mas continua sofrendo.",

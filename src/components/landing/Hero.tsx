@@ -17,23 +17,32 @@ function Pilula({ icon, label }: HeroPilula) {
 export function Hero(props: HeroProps) {
   return (
     <section className="relative overflow-hidden bg-section-dark-bg pb-16 pt-24 text-section-dark-fg sm:pt-28 md:min-h-[88vh] md:pb-0 md:pt-20">
-      {/* Glow radial vermelho atrás do apresentador */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-y-0 right-0 w-[80%] md:w-[50%]"
-        style={{
-          background:
-            "radial-gradient(55% 55% at 60% 50%, var(--red-deep) 0%, transparent 65%), radial-gradient(30% 28% at 55% 45%, var(--red-accent) 0%, transparent 70%)",
-          opacity: 0.55,
-        }}
-      />
-      {/* Vinheta escura nas bordas */}
+      {/* Base gradiente sutil para dar profundidade sem apagar */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(120% 80% at 20% 30%, transparent 40%, rgba(0,0,0,0.55) 100%)",
+            "linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(20,10,10,0.85) 45%, rgba(45,15,15,0.7) 100%)",
+        }}
+      />
+      {/* Glow radial vermelho intenso atrás do apresentador */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 right-0 w-[90%] md:w-[58%]"
+        style={{
+          background:
+            "radial-gradient(60% 60% at 55% 48%, var(--red-accent) 0%, transparent 55%), radial-gradient(45% 45% at 50% 42%, var(--red-deep) 0%, transparent 60%), radial-gradient(25% 22% at 48% 38%, rgba(255,60,50,0.35) 0%, transparent 70%)",
+          opacity: 0.85,
+        }}
+      />
+      {/* Vinheta suave nas bordas para manter foco no centro */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(110% 85% at 25% 35%, transparent 55%, rgba(0,0,0,0.35) 100%)",
         }}
       />
 

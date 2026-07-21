@@ -7,7 +7,7 @@ export function SectionCardsNumerados({ fundo, titulo, cards, fechamento }: Prop
     <SectionShell fundo={fundo}>
       <div className="mx-auto max-w-2xl text-center">
         <Reveal>
-          <h2 className="font-display text-[clamp(1.75rem,4vw,2.75rem)] font-semibold leading-tight text-balance">
+          <h2 className="font-display text-[clamp(1.5rem,4vw,2rem)] font-semibold leading-tight text-balance md:text-[clamp(1.5rem,2.6vw,2rem)]">
             {titulo}
           </h2>
         </Reveal>
@@ -18,11 +18,11 @@ export function SectionCardsNumerados({ fundo, titulo, cards, fechamento }: Prop
           const n = String(i + 1).padStart(2, "0");
           return (
             <Reveal as="li" key={n}>
-              <article className="relative overflow-hidden rounded-lg border border-white/10 bg-surface-dark/70 p-6 sm:p-7 md:p-8">
+              <article className="relative overflow-hidden rounded-lg border border-white/10 bg-surface-dark/70 p-6 sm:p-7 md:p-7">
                 <p className="relative text-base leading-relaxed sm:text-[17px]">{texto}</p>
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute -bottom-4 right-3 select-none font-display font-semibold leading-none text-red-accent/10 text-[96px] md:text-[120px]"
+                  className="pointer-events-none absolute -bottom-3 right-3 select-none font-display font-semibold leading-none text-red-accent/10 text-[80px] md:text-[88px]"
                 >
                   {n}
                 </span>

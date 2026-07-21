@@ -79,12 +79,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "[DEFINIR]" },
-      { name: "description", content: "[DEFINIR]" },
-      { property: "og:title", content: "[DEFINIR]" },
-      { property: "og:description", content: "[DEFINIR]" },
+      { title: "O Silêncio — Imersão de 2 Noites" },
+      { name: "description", content: "[DEFINIR]Descubra por que sua mente não para — e como mudar isso. Imersão online de 2 noites, ao vivo. 11 e 12 de agosto. Vagas limitadas." },
+      { property: "og:title", content: "O Silêncio — Imersão de 2 Noites" },
+      { property: "og:description", content: "[DEFINIR]Descubra por que sua mente não para — e como mudar isso. Imersão online de 2 noites, ao vivo. 11 e 12 de agosto. Vagas limitadas." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "O Silêncio — Imersão de 2 Noites" },
+      { name: "twitter:description", content: "[DEFINIR]Descubra por que sua mente não para — e como mudar isso. Imersão online de 2 noites, ao vivo. 11 e 12 de agosto. Vagas limitadas." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/32e56e9f-4807-4f8f-b142-3a9e9ca65220/id-preview-914132eb--e13becff-9c7b-44f7-b582-a6aad03b7b71.lovable.app-1784649919185.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/32e56e9f-4807-4f8f-b142-3a9e9ca65220/id-preview-914132eb--e13becff-9c7b-44f7-b582-a6aad03b7b71.lovable.app-1784649919185.png" },
     ],
     links: [
       {
@@ -105,7 +109,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
   shellComponent: RootShell,

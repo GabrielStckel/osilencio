@@ -25,7 +25,7 @@ export function SectionChecklist({ fundo, titulo, itens, fechamento }: Props) {
           ))}
         </ul>
         <Reveal>
-          <p className="mt-8 text-base leading-relaxed opacity-85 sm:text-[17px]">
+          <p className="mt-8 text-justify text-base leading-relaxed opacity-85 sm:text-[17px] md:text-left">
             {fechamento}
           </p>
         </Reveal>

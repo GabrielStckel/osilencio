@@ -19,6 +19,17 @@ export function SectionComoFunciona({ fundo, titulo, cards, texto }: Props) {
             "radial-gradient(ellipse at 50% 0%, rgba(220, 38, 38, 0.22), transparent 70%)",
         }}
       />
+      {/* Glow vermelho sutil por trás da base */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 opacity-60"
+        style={{
+          width: "60vw",
+          height: "45vh",
+          background:
+            "radial-gradient(ellipse at 50% 100%, rgba(220, 38, 38, 0.22), transparent 70%)",
+        }}
+      />
 
       <div className="relative mx-auto w-full max-w-6xl">
         <div className="text-center">

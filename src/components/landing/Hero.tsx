@@ -81,7 +81,7 @@ export function Hero(props: HeroProps) {
 
         {/* Coluna imagem */}
         <div className="relative md:col-span-6 md:self-end">
-          <div className="relative mx-auto aspect-[9/16] w-full max-w-[420px] md:max-w-none md:ml-auto md:aspect-auto md:h-[110vh]">
+          <div className="relative mx-auto aspect-[9/16] w-full max-w-[420px] md:max-w-none md:ml-auto md:aspect-auto md:h-[100vh]">
             {/* Sombra da foto projetada no fundo do hero */}
             <img
               src={props.imagem.src}

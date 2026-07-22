@@ -56,7 +56,7 @@ export function Hero(props: HeroProps) {
             {props.h1}
           </h1>
           {props.subtituloMobile && (
-            <p className="md:hidden mt-4 text-[15px] leading-[1.55] text-section-dark-fg/85">
+            <p className="md:hidden mt-4 text-justify text-[15px] leading-[1.55] text-section-dark-fg/85">
               {props.subtituloMobile}
             </p>
           )}

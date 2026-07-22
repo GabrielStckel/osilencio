@@ -33,7 +33,7 @@ export function SectionCardsNumerados({ fundo, titulo, cards, fechamento }: Prop
       </ul>
 
       <Reveal>
-        <p className="mx-auto mt-10 max-w-3xl text-center text-base leading-relaxed opacity-80 sm:text-[17px]">
+        <p className="mx-auto mt-10 max-w-3xl text-justify text-base leading-relaxed opacity-80 sm:text-[17px] md:text-center">
           {fechamento}
         </p>
       </Reveal>

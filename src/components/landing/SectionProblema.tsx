@@ -12,7 +12,7 @@ export function SectionProblema({ fundo, titulo, texto }: Props) {
           </h2>
         </Reveal>
         <Reveal>
-          <p className="mt-6 text-base leading-relaxed opacity-85 sm:text-[17px]">{texto}</p>
+          <p className="mt-6 text-justify text-base leading-relaxed opacity-85 sm:text-[17px] md:text-center">{texto}</p>
         </Reveal>
       </div>
     </SectionShell>

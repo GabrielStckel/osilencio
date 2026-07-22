@@ -29,7 +29,7 @@ export const landingContentA: LandingContent = {
     microtexto: "Vagas limitadas a 150 pessoas.",
     pilulas: [
       { icon: "calendar", label: "2 noites ao vivo" },
-      { icon: "monitor", label: "Direto no Zoom" },
+      { icon: "monitor", label: "Direto no Zoom", hiddenMobile: true },
       { icon: "users", label: "Vagas limitadas" },
     ],
     imagem: {

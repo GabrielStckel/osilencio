@@ -104,10 +104,6 @@ export function Hero(props: HeroProps) {
                    "linear-gradient(to bottom, black 0px, black 260px, rgba(0,0,0,0.92) 310px, rgba(0,0,0,0.55) 390px, rgba(0,0,0,0.16) 475px, transparent 545px)",
               }}
             />
-            <div
-              aria-hidden
-               className="pointer-events-none absolute inset-x-0 bottom-0 h-[48%] bg-gradient-to-t from-section-dark-bg via-section-dark-bg/70 to-transparent"
-            />
 
           </div>
         </div>

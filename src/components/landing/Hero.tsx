@@ -16,7 +16,7 @@ function Pilula({ icon, label }: HeroPilula) {
 
 export function Hero(props: HeroProps) {
   return (
-    <section className="relative overflow-hidden bg-section-dark-bg pb-16 pt-[46vh] text-section-dark-fg sm:pt-[48vh] md:min-h-[88vh] md:pb-0 md:pt-[6.5rem]">
+    <section className="relative overflow-hidden bg-section-dark-bg pb-16 pt-[42vh] text-section-dark-fg sm:pt-[44vh] md:min-h-[88vh] md:pb-0 md:pt-[6.5rem]">
       {/* Base gradiente sutil para dar profundidade sem apagar */}
       <div
         aria-hidden
@@ -86,7 +86,7 @@ export function Hero(props: HeroProps) {
         </div>
 
         {/* Coluna imagem: fundo no mobile, lateral no desktop */}
-        <div className="absolute inset-x-0 top-0 z-0 h-[52vh] md:static md:col-span-6 md:h-auto md:self-end">
+        <div className="absolute inset-x-0 top-0 z-0 h-[46vh] md:static md:col-span-6 md:h-auto md:self-end">
           <div className="relative mx-auto h-full w-full max-w-[520px] md:max-w-none md:ml-auto md:h-[100vh]">
             {/* Sombra da foto projetada no fundo do hero */}
             <img
@@ -96,7 +96,7 @@ export function Hero(props: HeroProps) {
               alt=""
               aria-hidden
               loading="eager"
-              className="absolute inset-0 h-full w-full object-cover object-[center_top] md:object-contain md:object-right-bottom"
+              className="absolute inset-0 h-full w-full object-contain object-top md:object-contain md:object-right-bottom"
               style={{
                 filter: "blur(50px) brightness(0.25) saturate(0)",
                 opacity: 0.35,
@@ -116,7 +116,7 @@ export function Hero(props: HeroProps) {
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              className="absolute inset-0 h-full w-full object-cover object-[center_top] md:object-contain md:object-right-bottom"
+              className="absolute inset-0 h-full w-full object-contain object-top md:object-contain md:object-right-bottom"
               style={{
                 WebkitMaskImage:
                   "radial-gradient(75% 100% at 50% 0%, black 35%, transparent 80%)",

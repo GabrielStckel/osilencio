@@ -52,25 +52,25 @@ export function Hero(props: HeroProps) {
           <span className="inline-block rounded-pill border border-red-accent/40 bg-red-accent/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-red-accent">
             {props.badge}
           </span>
-          <h1 className="mt-5 font-display font-semibold leading-[1.05] text-section-dark-fg text-[clamp(2rem,5.2vw,3.6rem)] md:mt-4 md:text-[clamp(1.75rem,3.4vw,2.6rem)] md:leading-[1.08]">
+          <h1 className="mt-5 font-display font-semibold leading-[1.05] text-section-dark-fg text-[clamp(2rem,5.2vw,3.6rem)] md:mt-3 md:text-[clamp(1.75rem,3.4vw,2.6rem)] md:leading-[1.08]">
             {props.h1}
           </h1>
-          <p className="mt-5 text-base leading-relaxed text-section-dark-fg/85 sm:text-[17px] md:mt-4 md:text-[15px] md:leading-[1.55]">
+          <p className="mt-5 text-base leading-relaxed text-section-dark-fg/85 sm:text-[17px] md:mt-3 md:text-[15px] md:leading-[1.55]">
             {props.subtitulo}
           </p>
-          <p className="mt-4 text-base leading-relaxed text-section-dark-fg/70 sm:text-[17px] md:mt-3 md:text-[15px] md:leading-[1.55]">
+          <p className="mt-4 text-base leading-relaxed text-section-dark-fg/70 sm:text-[17px] md:mt-2 md:text-[15px] md:leading-[1.55]">
             {props.apoio}
           </p>
 
           <a
             href={CHECKOUT_URL}
-            className="mt-7 inline-flex min-h-[52px] items-center justify-center gap-2 rounded-cta bg-red-primary px-6 text-sm font-bold uppercase tracking-wide text-on-red shadow-lg shadow-red-deep/40 transition-colors hover:bg-red-primary-hover md:mt-6 md:min-h-[56px] md:text-[15px]"
+            className="mt-7 inline-flex min-h-[52px] items-center justify-center gap-2 rounded-cta bg-red-primary px-6 text-sm font-bold uppercase tracking-wide text-on-red shadow-lg shadow-red-deep/40 transition-colors hover:bg-red-primary-hover md:mt-5 md:min-h-[56px] md:text-[15px]"
           >
             <Ticket className="h-4 w-4" aria-hidden />
             {props.cta}
           </a>
 
-          <ul className="mt-8 flex flex-wrap gap-2 md:mt-5">
+          <ul className="mt-8 flex flex-wrap gap-2 md:mt-4">
             {props.pilulas.map((p) => (
               <li key={p.label}>
                 <Pilula {...p} />

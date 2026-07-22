@@ -42,7 +42,7 @@ export function SectionListaVermelha({ fundo, titulo, itens, fechamento }: Props
                 >
                   <span
                     aria-hidden
-                    className="w-8 shrink-0 pt-0.5 font-display text-2xl leading-none text-white/45 md:text-3xl"
+                    className="w-8 shrink-0 pt-0.5 font-sans text-2xl font-semibold leading-none text-white/45 md:text-3xl"
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>

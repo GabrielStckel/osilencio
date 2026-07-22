@@ -69,7 +69,7 @@ export function SectionComoFunciona({ fundo, titulo, cards, texto }: Props) {
                     <Icon className="h-5 w-5" aria-hidden />
                   </span>
 
-                  <p className="relative font-display text-lg font-semibold leading-snug">
+                  <p className="relative font-sans text-lg font-semibold leading-snug tracking-wide">
                     {c.label}
                   </p>
                 </article>

@@ -55,7 +55,10 @@ export function Hero(props: HeroProps) {
           <h1 className="mt-5 font-display font-semibold leading-[1.05] text-section-dark-fg text-[clamp(2rem,5.2vw,3.6rem)] md:mt-3 md:text-[clamp(1.75rem,3.4vw,2.6rem)] md:leading-[1.08]">
             {props.h1}
           </h1>
-          <p className="hidden md:mt-3 md:block md:text-[15px] md:leading-[1.55] text-section-dark-fg/85">
+          <p className="mt-4 text-base leading-relaxed text-section-dark-fg/85 sm:text-[17px] md:mt-3 md:text-[15px] md:leading-[1.55]">
+            {props.textoAbaixoTitulo}
+          </p>
+          <p className="hidden md:mt-2 md:block md:text-[15px] md:leading-[1.55] text-section-dark-fg/85">
             {props.subtitulo}
           </p>
           <p className="hidden md:mt-2 md:block md:text-[15px] md:leading-[1.55] text-section-dark-fg/70">

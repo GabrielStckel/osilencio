@@ -93,7 +93,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       {
         rel: "preload",
-        href: playfair700Url,
+        href: lora700Url,
         as: "font",
         type: "font/woff2",
         crossOrigin: "anonymous",

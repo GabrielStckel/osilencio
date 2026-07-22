@@ -55,6 +55,11 @@ export function Hero(props: HeroProps) {
           <h1 className="mt-5 font-display font-semibold leading-[1.05] text-section-dark-fg text-[clamp(2rem,5.2vw,3.6rem)] md:mt-3 md:text-[clamp(1.75rem,3.4vw,2.6rem)] md:leading-[1.08]">
             {props.h1}
           </h1>
+          {props.subtituloMobile && (
+            <p className="md:hidden mt-4 text-[15px] leading-[1.55] text-section-dark-fg/85">
+              {props.subtituloMobile}
+            </p>
+          )}
           <p className="hidden md:mt-3 md:block md:text-[15px] md:leading-[1.55] text-section-dark-fg/85">
             {props.subtitulo}
           </p>

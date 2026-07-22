@@ -1,18 +1,17 @@
-# Ajuste do hero: fade inferior e sombra da foto no fundo
+# Ajuste do hero: exibir foto inteira e misturar só a base
 
 ## Objetivo
-1. Eliminar o aspecto de "linha reta" na base da foto do especialista, suavizando o fade inferior.
-2. Adicionar uma sombra/projeção sutil da foto do especialista no fundo do hero, aumentando profundidade e integração visual.
+Corrigir a interpretação anterior: exibir a foto do especialista **quase por completo**, e aplicar o fade/sombra **apenas na parte inferior** para que ela se misture suavemente com o fundo do hero.
 
 ## Alterações planejadas
 - Em `src/components/landing/Hero.tsx`:
-  - Ajustar a `mask-image` do `<img>` para um fade inferior mais suave e gradual, evitando a sensação de corte reto.
-  - Adicionar um elemento de sombra (por exemplo, uma camada blur da imagem ou um gradiente de sombra) posicionada atrás da foto, com baixa opacidade e desfoque, para criar a projeção no fundo.
+  - Trocar a `mask-image` atual (que esconde muito da imagem) por uma máscara que mantém a foto **100% visível até aproximadamente 80-85% da altura** e só desfoca/mistura a parte de baixo (últimos 15-20%).
+  - Ajustar a sombra de fundo para usar a mesma máscara suave, projetando a silhueta completa do especialista com sutil desfoque apenas na base.
 
 ## Como testar
-1. Verificar no preview se a base da foto desaparece suavemente sem linha reta.
-2. Confirmar que o fundo ganha uma sombra/reflexo sutil da imagem, sem competir com o texto.
+1. Verificar no preview se a foto do especialista aparece quase inteira.
+2. Confirmar que só a base da imagem se dissolve no fundo do hero, sem corte no meio.
 3. Rodar `bun run build` para garantir que não houve regressão.
 
 ## Risco
-Baixo — alterações visuais isoladas no hero, sem impacto em funcionalidade ou dados.
+Baixo — ajuste isolado de máscara CSS no hero.

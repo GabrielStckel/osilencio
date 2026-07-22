@@ -1,71 +1,70 @@
-import { Check } from "lucide-react";
 import type { SectionListaVermelha as Props } from "@/content/landing.types";
 import { Reveal } from "./Reveal";
 import { SectionShell } from "./SectionShell";
 
-function ItemTexto({ texto }: { texto: string }) {
-  const sep = " — ";
-  const idx = texto.indexOf(sep);
-  if (idx === -1) {
-    return <span className="text-base leading-relaxed sm:text-[17px]">{texto}</span>;
-  }
-  const head = texto.slice(0, idx);
-  const tail = texto.slice(idx + sep.length);
-  return (
-    <span className="block text-base leading-relaxed sm:text-[17px]">
-      <span className="font-display text-lg font-semibold sm:text-xl">{head}</span>
-      <span className="mt-1 block opacity-90">{tail}</span>
-    </span>
-  );
-}
-
 export function SectionListaVermelha({ fundo, titulo, itens, fechamento }: Props) {
   return (
     <SectionShell fundo={fundo} className="overflow-hidden">
-      {/* Textura sutil de fundo — CSS puro, custo zero */}
+      {/* Profundidade sutil no canto superior direito */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-60"
+        className="pointer-events-none absolute inset-0"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0)",
-          backgroundSize: "24px 24px",
+            "radial-gradient(circle at 100% 0%, rgba(0,0,0,0.28), transparent 55%)",
         }}
       />
 
-      <div className="relative mx-auto max-w-3xl">
-        <Reveal>
-          <h2 className="whitespace-pre-line text-balance font-display text-[clamp(1.5rem,4vw,2rem)] font-semibold leading-tight md:text-[clamp(1.5rem,2.6vw,2rem)]">
-            {titulo}
-          </h2>
-        </Reveal>
+      <div className="relative mx-auto grid max-w-5xl gap-10 md:grid-cols-5 md:gap-14">
+        {/* Coluna esquerda: cabeçalho editorial */}
+        <div className="md:col-span-2">
+          <Reveal>
+            <span className="block text-[11px] font-semibold uppercase tracking-[0.2em] opacity-70">
+              O que você vai entender
+            </span>
+            <h2 className="mt-3 font-display text-[clamp(1.75rem,5vw,2.25rem)] font-semibold leading-[1.05] md:text-[clamp(1.9rem,3.4vw,2.6rem)]">
+              {titulo}
+            </h2>
+            <p className="mt-6 hidden text-[15px] leading-relaxed opacity-85 md:block">
+              {fechamento}
+            </p>
+          </Reveal>
+        </div>
 
-        <ul className="mt-8 grid gap-4 sm:grid-cols-2 md:mt-10">
-          {itens.map((item, i) => (
-            <Reveal as="li" key={item}>
-              <div className="flex h-full items-start gap-3 rounded-lg border border-white/5 bg-white/[0.03] p-4 md:p-5">
-                <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/10">
-                  <Check className="h-3.5 w-3.5" aria-hidden />
-                </span>
-                <div className="flex-1">
+        {/* Coluna direita: lista editorial */}
+        <div className="md:col-span-3">
+          <Reveal>
+            <ul className="border-t border-white/15">
+              {itens.map((item, i) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-5 border-b border-white/15 py-4 md:gap-6 md:py-5"
+                >
                   <span
                     aria-hidden
-                    className="mb-1 block text-[11px] font-semibold uppercase tracking-widest opacity-60"
+                    className="w-8 shrink-0 pt-0.5 font-display text-2xl leading-none text-white/45 md:text-3xl"
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <ItemTexto texto={item} />
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </ul>
+                  <span className="text-[16px] leading-snug md:text-[17px]">
+                    {item.split(" — ").map((part, idx, arr) => (
+                      <span key={idx}>
+                        {part}
+                        {idx < arr.length - 1 && (
+                          <span className="text-white/60"> — </span>
+                        )}
+                      </span>
+                    ))}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
 
-        <Reveal>
-          <p className="mt-8 text-base leading-relaxed opacity-90 sm:text-[17px] md:mt-10">
+          <p className="mt-8 text-[15px] leading-relaxed opacity-90 md:hidden">
             {fechamento}
           </p>
-        </Reveal>
+        </div>
       </div>
     </SectionShell>
   );

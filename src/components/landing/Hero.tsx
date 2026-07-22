@@ -49,7 +49,7 @@ export function Hero(props: HeroProps) {
       <div className="relative mx-auto grid w-full max-w-6xl items-start gap-10 px-5 pt-[340px] sm:px-8 sm:pt-[360px] md:grid-cols-12 md:gap-6 md:pt-0">
         {/* Coluna texto */}
         <div className="relative z-10 md:col-span-6 md:pr-4">
-          <span className="inline-block rounded-pill border border-red-accent/40 bg-red-accent/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-red-accent">
+          <span className="inline-block rounded-pill border border-red-accent/40 bg-red-accent/10 px-3 py-1.5 text-[13px] font-semibold uppercase tracking-[0.08em] text-red-accent md:text-[11px] md:tracking-widest md:py-1">
             {props.badge}
           </span>
           <h1 className="mt-5 whitespace-pre-line font-display font-semibold leading-[1.08] text-section-dark-fg text-[clamp(1.6rem,6.8vw,2.35rem)] md:mt-3 md:text-[clamp(1.75rem,3.4vw,2.6rem)] md:leading-[1.08]">

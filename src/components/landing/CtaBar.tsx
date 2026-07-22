@@ -10,33 +10,31 @@ export function CtaBar({ label }: Props) {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const onScroll = () => setVisible(window.scrollY > 320);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
+    const BAR_OFFSET = 40;
 
-    // Detecta a seção que cruza a faixa da barra (últimos ~80px da viewport)
-    // usando elementFromPoint — evita bugs de batch do IntersectionObserver.
-    const BAR_OFFSET = 40; // metade da altura aproximada da barra
-    const detect = () => {
+    const update = () => {
+      const scrolled = window.scrollY > 320;
+      const section = document.getElementById("como-funciona");
+      const reachedHide = section
+        ? section.getBoundingClientRect().top <= window.innerHeight - BAR_OFFSET
+        : false;
+      setVisible(scrolled && !reachedHide);
+
       const y = window.innerHeight - BAR_OFFSET;
       const x = window.innerWidth / 2;
       const el = document.elementFromPoint(x, y) as HTMLElement | null;
-      const section = el?.closest<HTMLElement>("[data-section-bg]");
-      const bg = section?.getAttribute("data-section-bg");
+      const bgSection = el?.closest<HTMLElement>("[data-section-bg]");
+      const bg = bgSection?.getAttribute("data-section-bg");
       setOverLight(bg === "light");
     };
-    detect();
+    update();
 
-    const onFrame = () => {
-      detect();
-    };
-    window.addEventListener("scroll", onFrame, { passive: true });
-    window.addEventListener("resize", onFrame);
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("scroll", onFrame);
-      window.removeEventListener("resize", onFrame);
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
     };
   }, []);
 

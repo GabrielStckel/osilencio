@@ -15,7 +15,7 @@ export type Topbar = {
   badgeCalendario: string;
 };
 
-export type HeroPilula = { icon: "calendar" | "monitor" | "users"; label: string };
+export type HeroPilula = { icon: "calendar" | "monitor" | "users"; label: string; hiddenMobile?: boolean };
 
 export type Hero = {
   badge: string;

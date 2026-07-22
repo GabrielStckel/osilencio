@@ -46,9 +46,9 @@ export function Hero(props: HeroProps) {
         }}
       />
 
-      <div className="relative mx-auto grid w-full max-w-6xl items-end gap-10 px-5 sm:px-8 md:grid-cols-12 md:items-start md:gap-6">
+      <div className="relative mx-auto grid w-full max-w-6xl items-start gap-10 px-5 sm:px-8 md:grid-cols-12 md:gap-6">
         {/* Coluna texto */}
-        <div className="md:col-span-6 md:pr-4">
+        <div className="relative z-10 md:col-span-6 md:pr-4">
           <span className="inline-block rounded-pill border border-red-accent/40 bg-red-accent/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-red-accent">
             {props.badge}
           </span>
@@ -85,9 +85,9 @@ export function Hero(props: HeroProps) {
           </ul>
         </div>
 
-        {/* Coluna imagem */}
-        <div className="relative md:col-span-6 md:self-end">
-          <div className="relative mx-auto aspect-[9/16] w-full max-w-[420px] md:max-w-none md:ml-auto md:aspect-auto md:h-[100vh]">
+        {/* Coluna imagem: fundo no mobile, lateral no desktop */}
+        <div className="absolute inset-0 z-0 md:static md:col-span-6 md:self-end">
+          <div className="relative mx-auto h-[62vh] w-full max-w-[420px] md:max-w-none md:ml-auto md:h-[100vh]">
             {/* Sombra da foto projetada no fundo do hero */}
             <img
               src={props.imagem.src}
@@ -96,7 +96,7 @@ export function Hero(props: HeroProps) {
               alt=""
               aria-hidden
               loading="eager"
-              className="absolute inset-0 h-full w-full object-contain object-right-bottom md:object-[right_bottom]"
+              className="absolute inset-0 h-full w-full object-cover object-top md:object-contain md:object-right-bottom"
               style={{
                 filter: "blur(50px) brightness(0.25) saturate(0)",
                 opacity: 0.35,
@@ -116,7 +116,7 @@ export function Hero(props: HeroProps) {
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              className="absolute inset-0 h-full w-full object-contain object-right-bottom md:object-[right_bottom]"
+              className="absolute inset-0 h-full w-full object-cover object-top md:object-contain md:object-right-bottom"
               style={{
                 WebkitMaskImage:
                   "radial-gradient(75% 100% at 50% 0%, black 35%, transparent 80%)",
@@ -124,6 +124,11 @@ export function Hero(props: HeroProps) {
                   "radial-gradient(75% 100% at 50% 0%, black 35%, transparent 80%)",
                 zIndex: 1,
               }}
+            />
+            {/* Fade inferior no mobile para misturar com fundo escuro */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-section-dark-bg via-section-dark-bg/80 to-transparent md:hidden"
             />
           </div>
         </div>

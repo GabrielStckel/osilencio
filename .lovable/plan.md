@@ -1,22 +1,46 @@
-## Ajuste visual da seção "Em 2 noites, você vai entender:"
 
-A seção vermelha (`SectionListaVermelha`) está com escala excessiva em relação ao restante da página: título grande demais, cards individuais com padding generoso e espaçamento vertical que criam muito vazio. O objetivo é deixá-la mais compacta, alinhada ao ritmo visual da página e com melhor aproveitamento de largura no desktop.
+# Refazer seção Lista Vermelha (`SectionListaVermelha.tsx`) — desktop
 
-### Passos
-1. **Reduzir o título** para o mesmo patamar da seção de cards numerados (`text-[clamp(1.5rem,4vw,2rem)] md:text-[clamp(1.5rem,2.6vw,2rem)]`), mantendo `font-display` semibold, `leading-tight` e `text-balance`.
-2. **Reorganizar a lista em grid responsivo**: 1 coluna no mobile, 2 colunas no desktop (`grid gap-4 sm:grid-cols-2`), para preencher melhor a largura e reduzir a sensação de vazio.
-3. **Compactar os cards**:
-   - Reduzir padding para `p-4 md:p-5`.
-   - Suavizar borda para `border-white/5` e fundo para `bg-white/[0.03]`.
-   - Manter check + numeração, mas em layout mais denso (ícone menor ou numeração alinhada ao título).
-4. **Ajustar espaçamentos verticais**: margem entre título e lista para `mt-8 md:mt-10`, e entre lista e fechamento para `mt-8 md:mt-10`, para não alongar a seção.
-5. **Preservar** a textura de fundo e a hierarquia tipográfica dos itens (título em negrito + explicação).
+Escopo fechado: apenas a seção vermelha "Em 2 noites, você vai entender:". Sem mexer em conteúdo (`landing.a.ts`), tokens, ou outras seções.
 
-### Fora do escopo
-- Alterar conteúdo/copy da seção.
-- Mudar outras seções da landing.
-- Alterar a cor de fundo ou identidade visual.
+## Diagnóstico do estado atual
+- Grid 2 colunas com cards em `bg-white/[0.03]`, numeração `01–05`, ícone check em círculo e split tipográfico no `—`.
+- Resultado: cards genéricos, muitos elementos competindo (numeral + check + head/tail), textura de pontos genérica, título isolado no topo.
 
-### Verificação
-- Preview desktop mostra a seção vermelha com título menor, cards em 2 colunas e sem vazio excessivo.
-- Mobile permanece legível em 1 coluna.
+## Novo layout proposto (desktop-first, mantém mobile)
+
+Estrutura editorial em 2 colunas assimétricas dentro do `max-w-5xl`:
+
+```text
+┌───────────────────────┬──────────────────────────────┐
+│ eyebrow "O QUE VOCÊ    │ 01 ─ Por que sua mente...   │
+│  VAI ENTENDER"         │ 02 ─ O medo que está...     │
+│                        │ 03 ─ Como sua mente...      │
+│ H2 grande, display     │ 04 ─ Como mudar seu...      │
+│ "Em 2 noites,          │ 05 ─ Como ter paz...        │
+│  você vai entender:"   │                              │
+│                        │ ─────────────────────────    │
+│ fechamento em          │                              │
+│ parágrafo curto        │                              │
+└───────────────────────┴──────────────────────────────┘
+```
+
+- Coluna esquerda (`md:col-span-2` de 5): eyebrow curto em uppercase + tracking, H2 em `font-display` maior (sem `text-balance` forçando quebras estranhas), fechamento como parágrafo abaixo do H2 no desktop (no mobile o fechamento fica ao final da lista, como hoje).
+- Coluna direita (`md:col-span-3`): lista sem cards de fundo. Cada item é uma linha com:
+  - Numeral grande `01–05` em `font-display`, `text-3xl`, cor `text-white/40`, largura fixa para alinhar.
+  - Regra horizontal fina `border-t border-white/15` entre itens (linha superior no primeiro item também), dando ritmo editorial.
+  - Texto do item em uma linha só (sem split head/tail no `—`): `text-[17px] leading-snug`, `—` mantido inline com `text-white/60` para hierarquizar.
+  - Padding vertical generoso (`py-4 md:py-5`) para respiro; sem card, sem check, sem badge.
+
+## Ajustes de estilo
+- Fundo: manter `fundo: "red"` do `SectionShell`. Substituir textura de pontos por um gradiente radial muito sutil no canto superior direito (`radial-gradient` em `rgba(0,0,0,0.25)`) para dar profundidade sem ruído.
+- Remover `Reveal` item a item (fica pesado com 5 linhas); manter `Reveal` só no bloco de cabeçalho e no bloco da lista.
+- Tipografia: H2 `md:text-[clamp(1.9rem,3.4vw,2.6rem)]`, eyebrow `text-xs tracking-[0.2em] uppercase opacity-70`.
+
+## Alterações
+- `src/components/landing/SectionListaVermelha.tsx`: reescrever a estrutura interna (mantém a assinatura de `Props` e o `SectionShell`).
+- Remover o helper `ItemTexto` (não usado no novo layout).
+
+## Validação
+- Build (`bun run build`).
+- Screenshot desktop 1280 via Playwright para conferir alinhamento, densidade e legibilidade.

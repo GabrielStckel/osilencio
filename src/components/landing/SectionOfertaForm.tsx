@@ -1,6 +1,6 @@
 import { Check } from "lucide-react";
 import type { SectionOfertaForm as Props, Variante } from "@/content/landing.types";
-import { LeadForm } from "./LeadForm";
+import { CHECKOUT_URL } from "@/lib/config";
 import { Reveal } from "./Reveal";
 import { SectionShell } from "./SectionShell";
 
@@ -22,7 +22,6 @@ function Preco({ valor }: { valor: string }) {
 
 export function SectionOfertaForm({
   section,
-  variante,
 }: {
   section: Props;
   variante: Variante;
@@ -38,9 +37,9 @@ export function SectionOfertaForm({
         </Reveal>
       </div>
 
-      <div className="mx-auto mt-12 grid max-w-4xl gap-6 md:mt-16 md:grid-cols-2 md:gap-10">
+      <div className="mx-auto mt-12 max-w-xl md:mt-16">
         <Reveal>
-          <article className="relative h-full rounded-xl border-2 border-red-accent/60 bg-surface-dark/70 p-7 shadow-2xl shadow-red-deep/40 sm:p-8">
+          <article className="relative rounded-xl border-2 border-red-accent/60 bg-surface-dark/70 p-7 shadow-2xl shadow-red-deep/40 sm:p-8">
             <span className="absolute -top-3 left-6 inline-flex items-center rounded-pill bg-red-accent px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-on-red shadow-md shadow-red-deep/50">
               Oferta
             </span>
@@ -68,18 +67,20 @@ export function SectionOfertaForm({
               </ul>
             )}
 
-            <p className="mt-6 border-t border-white/10 pt-4 text-xs opacity-70">
+            <a
+              href={CHECKOUT_URL}
+              className="mt-7 inline-flex min-h-[52px] w-full items-center justify-center rounded-cta bg-red-primary px-6 text-sm font-bold uppercase tracking-wide text-on-red transition-colors hover:bg-red-primary-hover"
+            >
+              {section.cta}
+            </a>
+
+            <p className="mt-5 border-t border-white/10 pt-4 text-xs opacity-70">
               {section.urgencia}
             </p>
           </article>
-        </Reveal>
-
-        <Reveal>
-          <div className="rounded-xl border border-white/10 bg-black/40 p-6 sm:p-8">
-            <LeadForm variante={variante} cta={section.cta} />
-          </div>
         </Reveal>
       </div>
     </SectionShell>
   );
 }
+

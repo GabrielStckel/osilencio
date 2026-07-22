@@ -21,7 +21,9 @@ export type Hero = {
   badge: string;
   h1: string;
   subtitulo: string;
+  subtituloMobile?: string;
   apoio: string;
+  apoioMobile?: string;
   cta: string;
   microtexto: string;
   pilulas: HeroPilula[];

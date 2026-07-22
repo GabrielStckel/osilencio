@@ -55,10 +55,19 @@ export function Hero(props: HeroProps) {
           <h1 className="mt-5 font-display font-semibold leading-[1.05] text-section-dark-fg text-[clamp(2rem,5.2vw,3.6rem)] md:mt-3 md:text-[clamp(1.75rem,3.4vw,2.6rem)] md:leading-[1.08]">
             {props.h1}
           </h1>
-          <p className="mt-5 text-base leading-relaxed text-section-dark-fg/85 sm:text-[17px] md:mt-3 md:text-[15px] md:leading-[1.55]">
+          {/* Texto mobile */}
+          <p className="mt-5 text-base leading-relaxed text-section-dark-fg/85 sm:text-[17px] md:hidden md:mt-3 md:text-[15px] md:leading-[1.55]">
+            {props.subtituloMobile ?? props.subtitulo}
+          </p>
+          <p className="mt-4 text-base leading-relaxed text-section-dark-fg/70 sm:text-[17px] md:hidden md:mt-2 md:text-[15px] md:leading-[1.55]">
+            {props.apoioMobile ?? props.apoio}
+          </p>
+
+          {/* Texto desktop */}
+          <p className="mt-5 text-base leading-relaxed text-section-dark-fg/85 sm:text-[17px] md:mt-3 md:block md:text-[15px] md:leading-[1.55]">
             {props.subtitulo}
           </p>
-          <p className="mt-4 text-base leading-relaxed text-section-dark-fg/70 sm:text-[17px] md:mt-2 md:text-[15px] md:leading-[1.55]">
+          <p className="mt-4 text-base leading-relaxed text-section-dark-fg/70 sm:text-[17px] md:mt-2 md:block md:text-[15px] md:leading-[1.55]">
             {props.apoio}
           </p>
 

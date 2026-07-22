@@ -81,7 +81,7 @@ export function Hero(props: HeroProps) {
 
         {/* Coluna imagem */}
         <div className="relative md:col-span-6 md:self-end">
-          <div className="relative mx-auto aspect-[9/16] w-full max-w-[420px] md:max-w-none md:ml-auto md:aspect-auto md:h-[96vh]">
+          <div className="relative mx-auto aspect-[9/16] w-full max-w-[420px] md:max-w-none md:ml-auto md:aspect-auto md:h-[110vh]">
             <img
               src={props.imagem.src}
               width={props.imagem.width}

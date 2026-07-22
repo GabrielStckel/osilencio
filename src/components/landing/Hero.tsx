@@ -16,7 +16,7 @@ function Pilula({ icon, label }: HeroPilula) {
 
 export function Hero(props: HeroProps) {
   return (
-    <section className="relative overflow-hidden bg-section-dark-bg pb-16 pt-24 text-section-dark-fg sm:pt-28 md:min-h-[88vh] md:pb-0 md:pt-16">
+    <section className="relative overflow-hidden bg-section-dark-bg pb-16 pt-24 text-section-dark-fg sm:pt-28 md:min-h-[88vh] md:pb-0 md:pt-[6.5rem]">
       {/* Base gradiente sutil para dar profundidade sem apagar */}
       <div
         aria-hidden

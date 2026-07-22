@@ -82,6 +82,26 @@ export function Hero(props: HeroProps) {
         {/* Coluna imagem */}
         <div className="relative md:col-span-6 md:self-end">
           <div className="relative mx-auto aspect-[9/16] w-full max-w-[420px] md:max-w-none md:ml-auto md:aspect-auto md:h-[110vh]">
+            {/* Sombra da foto projetada no fundo do hero */}
+            <img
+              src={props.imagem.src}
+              width={props.imagem.width}
+              height={props.imagem.height}
+              alt=""
+              aria-hidden
+              loading="eager"
+              className="absolute inset-0 h-full w-full object-contain object-right-bottom md:object-[right_bottom]"
+              style={{
+                filter: "blur(50px) brightness(0.25) saturate(0)",
+                opacity: 0.35,
+                transform: "translateY(28px) scale(1.12)",
+                WebkitMaskImage:
+                  "radial-gradient(75% 100% at 50% 0%, black 35%, transparent 80%)",
+                maskImage:
+                  "radial-gradient(75% 100% at 50% 0%, black 35%, transparent 80%)",
+                zIndex: 0,
+              }}
+            />
             <img
               src={props.imagem.src}
               width={props.imagem.width}
@@ -93,9 +113,10 @@ export function Hero(props: HeroProps) {
               className="absolute inset-0 h-full w-full object-contain object-right-bottom md:object-[right_bottom]"
               style={{
                 WebkitMaskImage:
-                  "linear-gradient(to bottom, black 0%, black 45%, transparent 92%)",
+                  "radial-gradient(75% 100% at 50% 0%, black 35%, transparent 80%)",
                 maskImage:
-                  "linear-gradient(to bottom, black 0%, black 45%, transparent 92%)",
+                  "radial-gradient(75% 100% at 50% 0%, black 35%, transparent 80%)",
+                zIndex: 1,
               }}
             />
           </div>

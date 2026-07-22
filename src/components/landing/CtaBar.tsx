@@ -9,31 +9,34 @@ export function CtaBar({ label }: Props) {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    // Aparece após rolar um pouco do hero.
+
     const onScroll = () => setVisible(window.scrollY > 320);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
 
-    // Detecta seção clara em interseção com a barra (últimos ~80px da viewport).
-    const targets = document.querySelectorAll<HTMLElement>("[data-section-bg]");
-    const io = new IntersectionObserver(
-      (entries) => {
-        // Pega a entry com maior interseção na base
-        let light = false;
-        for (const e of entries) {
-          if (e.isIntersecting && e.target.getAttribute("data-section-bg") === "light") {
-            light = true;
-          }
-        }
-        setOverLight(light);
-      },
-      { rootMargin: "0px 0px -85% 0px", threshold: 0 },
-    );
-    targets.forEach((t) => io.observe(t));
+    // Detecta a seção que cruza a faixa da barra (últimos ~80px da viewport)
+    // usando elementFromPoint — evita bugs de batch do IntersectionObserver.
+    const BAR_OFFSET = 40; // metade da altura aproximada da barra
+    const detect = () => {
+      const y = window.innerHeight - BAR_OFFSET;
+      const x = window.innerWidth / 2;
+      const el = document.elementFromPoint(x, y) as HTMLElement | null;
+      const section = el?.closest<HTMLElement>("[data-section-bg]");
+      const bg = section?.getAttribute("data-section-bg");
+      setOverLight(bg === "light");
+    };
+    detect();
+
+    const onFrame = () => {
+      detect();
+    };
+    window.addEventListener("scroll", onFrame, { passive: true });
+    window.addEventListener("resize", onFrame);
 
     return () => {
       window.removeEventListener("scroll", onScroll);
-      io.disconnect();
+      window.removeEventListener("scroll", onFrame);
+      window.removeEventListener("resize", onFrame);
     };
   }, []);
 

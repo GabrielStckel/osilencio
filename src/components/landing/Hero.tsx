@@ -16,7 +16,7 @@ function Pilula({ icon, label }: HeroPilula) {
 
 export function Hero(props: HeroProps) {
   return (
-    <section className="relative overflow-hidden bg-section-dark-bg pb-16 pt-24 text-section-dark-fg sm:pt-28 md:min-h-[88vh] md:pb-0 md:pt-16">
+    <section className="relative overflow-hidden bg-section-dark-bg pb-16 pt-24 text-section-dark-fg sm:pt-28 md:min-h-[88vh] md:pb-0 md:pt-[6.5rem]">
       {/* Base gradiente sutil para dar profundidade sem apagar */}
       <div
         aria-hidden
@@ -81,7 +81,7 @@ export function Hero(props: HeroProps) {
 
         {/* Coluna imagem */}
         <div className="relative md:col-span-6 md:self-end">
-          <div className="relative mx-auto aspect-[9/16] w-full max-w-[420px] md:max-w-none md:ml-auto md:aspect-auto md:h-[110vh]">
+          <div className="relative mx-auto aspect-[9/16] w-full max-w-[420px] md:max-w-none md:ml-auto md:aspect-auto md:h-[100vh]">
             {/* Sombra da foto projetada no fundo do hero */}
             <img
               src={props.imagem.src}

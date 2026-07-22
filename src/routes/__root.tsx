@@ -10,7 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import playfair700Url from "@fontsource/playfair-display/files/playfair-display-latin-700-normal.woff2?url";
+import lora700Url from "@fontsource/lora/files/lora-latin-700-normal.woff2?url";
 import inter400Url from "@fontsource/inter/files/inter-latin-400-normal.woff2?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 

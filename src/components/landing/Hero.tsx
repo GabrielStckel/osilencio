@@ -46,7 +46,7 @@ export function Hero(props: HeroProps) {
         }}
       />
 
-      <div className="relative mx-auto grid w-full max-w-6xl items-start gap-10 px-5 pt-[430px] sm:px-8 sm:pt-[450px] md:grid-cols-12 md:gap-6 md:pt-0">
+      <div className="relative mx-auto grid w-full max-w-6xl items-start gap-10 px-5 pt-[340px] sm:px-8 sm:pt-[360px] md:grid-cols-12 md:gap-6 md:pt-0">
         {/* Coluna texto */}
         <div className="relative z-10 md:col-span-6 md:pr-4">
           <span className="inline-block rounded-pill border border-red-accent/40 bg-red-accent/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-red-accent">

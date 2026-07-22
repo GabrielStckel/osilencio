@@ -8,11 +8,11 @@ function Preco({ valor }: { valor: string }) {
   // Espera formato "R$ 47,00"
   const match = valor.match(/^(R\$)\s*(\d+)([.,]\d{2})?$/);
   if (!match) {
-    return <span className="font-display text-5xl font-bold text-red-accent">{valor}</span>;
+    return <span className="font-sans text-5xl font-bold text-red-accent">{valor}</span>;
   }
   const [, moeda, inteiro, centavos] = match;
   return (
-    <span className="inline-flex items-start font-display text-red-accent">
+    <span className="inline-flex items-start font-sans text-red-accent">
       <span className="mt-2 text-2xl font-semibold">{moeda}</span>
       <span className="ml-1 text-6xl font-bold leading-none md:text-7xl">{inteiro}</span>
       {centavos && <span className="mt-2 text-2xl font-semibold">{centavos}</span>}
@@ -44,7 +44,7 @@ export function SectionOfertaForm({
             <span className="absolute -top-3 left-6 inline-flex items-center rounded-pill bg-red-accent px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-on-red shadow-md shadow-red-deep/50">
               Oferta
             </span>
-            <h3 className="mt-2 font-display text-2xl leading-tight">
+            <h3 className="mt-2 font-sans text-2xl font-semibold leading-tight">
               {section.cardOferta.nome}
             </h3>
 

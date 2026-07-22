@@ -1,15 +1,15 @@
-# Ajuste do hero: aumentar imagem do especialista
+# Ajuste do hero: aumentar ainda mais a foto do especialista
 
 ## Objetivo
-Aumentar a foto do apresentador na seção `Hero` em desktop, **sem alterar** tipografia, cores, gradientes, botão, espaçamentos de texto, badge ou layout do restante do hero.
+Aumentar a foto do apresentador na seção `Hero` em desktop ainda mais do que no último ajuste (`md:h-[96vh]`), **sem alterar** nenhum outro elemento do hero (texto, cores, gradientes, CTA, espaçamentos de texto, badge, etc.).
 
 ## Alteração planejada
-- No arquivo `src/components/landing/Hero.tsx`, ajustar o container da imagem na coluna direita para ocupar mais área visualmente, usando apenas os tokens de espaçamento/largura/altura do componente (nada de texto, background, gradientes ou CTA).
+- Em `src/components/landing/Hero.tsx`, aumentar a altura do container da imagem na coluna direita, indo além de `md:h-[96vh]` para aproximadamente `md:h-[110vh]` ou um valor que ainda respeite a máscara de fade inferior e a posição à direita.
 
 ## Como testar
-1. Aumentar a imagem em desktop mantendo o fade inferior e a posição à direita.
-2. Verificar no preview se a imagem está maior e ainda se dissolve suavemente na base.
-3. Rodar `bun run build` para garantir que não houve regressão.
+1. Ajustar o valor de altura da imagem no hero.
+2. Verificar no preview se a imagem ficou maior, ainda se dissolve na base e não corta de forma dura.
+3. Rodar `bun run build` para confirmar que não houve regressão.
 
 ## Risco
-Praticamente zero — é ajuste localizado de dimensões do container de imagem.
+Praticamente zero — é ajuste de dimensão localizado na imagem.

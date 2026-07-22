@@ -96,7 +96,7 @@ export const landingContentA: LandingContent = {
     },
     {
       kind: "comoFunciona",
-      fundo: "light",
+      fundo: "dark",
       titulo: "Uma Imersão de 2 Noites",
       cards: [
         { icon: "calendar", label: "11 e 12 de agosto, das 19h30 às 21h30" },

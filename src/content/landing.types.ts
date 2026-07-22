@@ -22,6 +22,7 @@ export type Hero = {
   h1: string;
   subtitulo: string;
   apoio: string;
+  subtituloMobile?: string;
   cta: string;
   microtexto: string;
   pilulas: HeroPilula[];

@@ -18,7 +18,7 @@ export const landingContentA: LandingContent = {
   },
   hero: {
     badge: "IMERSÃO ONLINE E AO VIVO • 2 NOITES",
-    h1: "Você passa o dia inteiro pensando em problemas que não consegue resolver.",
+    h1: "Você passa o dia inteiro\npensando em problemas\nque não consegue resolver.",
     subtitulo:
       "Sua mente não para. Preocupação. Ansiedade. Falta de foco. Memória fraca. Cansaço mental. Você já tentou de tudo. Meditação. Terapia. Remédios. Nada funciona de verdade. Porque você está tratando o sintoma, não a causa.",
     apoio:

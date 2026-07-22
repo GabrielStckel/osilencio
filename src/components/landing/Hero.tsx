@@ -52,7 +52,7 @@ export function Hero(props: HeroProps) {
           <span className="inline-block rounded-pill border border-red-accent/40 bg-red-accent/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-red-accent">
             {props.badge}
           </span>
-          <h1 className="mt-5 font-display font-semibold leading-[1.08] text-section-dark-fg text-[clamp(1.6rem,6.8vw,2.35rem)] md:mt-3 md:text-[clamp(1.75rem,3.4vw,2.6rem)] md:leading-[1.08]">
+          <h1 className="mt-5 whitespace-pre-line font-display font-semibold leading-[1.08] text-section-dark-fg text-[clamp(1.6rem,6.8vw,2.35rem)] md:mt-3 md:text-[clamp(1.75rem,3.4vw,2.6rem)] md:leading-[1.08]">
             {props.h1}
           </h1>
           {props.subtituloMobile && (

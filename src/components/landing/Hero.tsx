@@ -78,7 +78,7 @@ export function Hero(props: HeroProps) {
 
           <ul className="mt-8 flex flex-wrap gap-2 md:mt-4">
             {props.pilulas.map((p) => (
-              <li key={p.label}>
+              <li key={p.label} className={p.hiddenMobile ? "hidden md:block" : ""}>
                 <Pilula {...p} />
               </li>
             ))}

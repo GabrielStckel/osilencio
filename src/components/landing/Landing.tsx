@@ -34,7 +34,11 @@ export function Landing({ content }: { content: LandingContent }) {
           case "checklist":
             return <SectionChecklist key={key} {...s} />;
           case "comoFunciona":
-            return <SectionComoFunciona key={key} {...s} />;
+            return (
+              <div key={key} id="como-funciona">
+                <SectionComoFunciona {...s} />
+              </div>
+            );
           case "ofertaForm":
             return (
               <SectionOfertaForm key={key} section={s} variante={content.variante} />

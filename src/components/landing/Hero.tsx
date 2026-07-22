@@ -48,7 +48,7 @@ export function Hero(props: HeroProps) {
 
       <div className="relative mx-auto grid w-full max-w-6xl items-end gap-10 px-5 sm:px-8 md:grid-cols-12 md:items-center md:gap-6">
         {/* Coluna texto */}
-        <div className="md:col-span-5 md:pr-4">
+        <div className="md:col-span-6 md:pr-4">
           <span className="inline-block rounded-pill border border-red-accent/40 bg-red-accent/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-red-accent">
             {props.badge}
           </span>
@@ -80,8 +80,8 @@ export function Hero(props: HeroProps) {
         </div>
 
         {/* Coluna imagem */}
-        <div className="relative md:col-span-7 md:self-end">
-          <div className="relative mx-auto aspect-[9/16] w-full max-w-[420px] md:max-w-none md:ml-auto md:aspect-auto md:h-[90vh]">
+        <div className="relative md:col-span-6 md:self-end">
+          <div className="relative mx-auto aspect-[9/16] w-full max-w-[420px] md:max-w-none md:ml-auto md:aspect-auto md:h-[78vh]">
             <img
               src={props.imagem.src}
               width={props.imagem.width}
@@ -93,9 +93,9 @@ export function Hero(props: HeroProps) {
               className="absolute inset-0 h-full w-full object-contain object-right-bottom md:object-[right_bottom]"
               style={{
                 WebkitMaskImage:
-                  "linear-gradient(to bottom, black 0%, black 42%, transparent 96%)",
+                  "linear-gradient(to bottom, black 0%, black 45%, transparent 92%)",
                 maskImage:
-                  "linear-gradient(to bottom, black 0%, black 42%, transparent 96%)",
+                  "linear-gradient(to bottom, black 0%, black 45%, transparent 92%)",
               }}
             />
           </div>

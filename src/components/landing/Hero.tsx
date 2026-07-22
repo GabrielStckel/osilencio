@@ -99,15 +99,16 @@ export function Hero(props: HeroProps) {
               className="absolute left-[54%] top-0 h-auto w-[520px] max-w-none -translate-x-1/2"
               style={{
                 WebkitMaskImage:
-                  "linear-gradient(to bottom, black 0%, black 55%, transparent 92%)",
+                  "linear-gradient(to bottom, black 0%, black 35%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.15) 78%, transparent 92%)",
                 maskImage:
-                  "linear-gradient(to bottom, black 0%, black 55%, transparent 92%)",
+                  "linear-gradient(to bottom, black 0%, black 35%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.15) 78%, transparent 92%)",
               }}
             />
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-section-dark-bg via-section-dark-bg/85 to-transparent"
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-section-dark-bg via-section-dark-bg/95 to-transparent"
             />
+
           </div>
         </div>
 

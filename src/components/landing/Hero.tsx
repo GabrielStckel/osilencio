@@ -16,7 +16,7 @@ function Pilula({ icon, label }: HeroPilula) {
 
 export function Hero(props: HeroProps) {
   return (
-    <section className="relative overflow-hidden bg-section-dark-bg pb-16 pt-[42vh] text-section-dark-fg sm:pt-[44vh] md:min-h-[88vh] md:pb-0 md:pt-[6.5rem]">
+    <section className="relative overflow-hidden bg-section-dark-bg pb-12 text-section-dark-fg md:min-h-[88vh] md:pb-0 md:pt-[6.5rem]">
       {/* Base gradiente sutil para dar profundidade sem apagar */}
       <div
         aria-hidden
@@ -46,7 +46,7 @@ export function Hero(props: HeroProps) {
         }}
       />
 
-      <div className="relative mx-auto grid w-full max-w-6xl items-start gap-10 px-5 sm:px-8 md:grid-cols-12 md:gap-6">
+      <div className="relative mx-auto grid w-full max-w-6xl items-start gap-10 px-5 pt-[430px] sm:px-8 sm:pt-[450px] md:grid-cols-12 md:gap-6 md:pt-0">
         {/* Coluna texto */}
         <div className="relative z-10 md:col-span-6 md:pr-4">
           <span className="inline-block rounded-pill border border-red-accent/40 bg-red-accent/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-red-accent">
@@ -85,9 +85,29 @@ export function Hero(props: HeroProps) {
           </ul>
         </div>
 
-        {/* Coluna imagem: fundo no mobile, lateral no desktop */}
-        <div className="absolute inset-x-0 top-0 z-0 h-[46vh] md:static md:col-span-6 md:h-auto md:self-end">
-          <div className="relative mx-auto h-full w-full max-w-[520px] md:max-w-none md:ml-auto md:h-[100vh]">
+        {/* Imagem mobile: presença ampla, rosto livre acima do título */}
+        <div className="absolute inset-x-0 top-0 z-0 h-[610px] overflow-hidden md:hidden">
+          <div className="relative h-full w-full">
+            <img
+              src={props.imagem.src}
+              width={props.imagem.width}
+              height={props.imagem.height}
+              alt={props.imagem.alt}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              className="absolute left-[54%] top-3 h-auto w-[520px] max-w-none -translate-x-1/2"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-[48%] bg-gradient-to-t from-section-dark-bg via-section-dark-bg/90 to-transparent"
+            />
+          </div>
+        </div>
+
+        {/* Imagem desktop preservada */}
+        <div className="hidden md:static md:col-span-6 md:block md:h-auto md:self-end">
+          <div className="relative ml-auto h-[100vh] w-full">
             {/* Sombra da foto projetada no fundo do hero */}
             <img
               src={props.imagem.src}
@@ -96,7 +116,7 @@ export function Hero(props: HeroProps) {
               alt=""
               aria-hidden
               loading="eager"
-              className="absolute inset-0 h-full w-full object-contain object-top md:object-contain md:object-right-bottom"
+              className="absolute inset-0 h-full w-full object-contain object-right-bottom"
               style={{
                 filter: "blur(50px) brightness(0.25) saturate(0)",
                 opacity: 0.35,
@@ -116,7 +136,7 @@ export function Hero(props: HeroProps) {
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              className="absolute inset-0 h-full w-full object-contain object-top md:object-contain md:object-right-bottom"
+              className="absolute inset-0 h-full w-full object-contain object-right-bottom"
               style={{
                 WebkitMaskImage:
                   "radial-gradient(75% 100% at 50% 0%, black 35%, transparent 80%)",
@@ -124,11 +144,6 @@ export function Hero(props: HeroProps) {
                   "radial-gradient(75% 100% at 50% 0%, black 35%, transparent 80%)",
                 zIndex: 1,
               }}
-            />
-            {/* Fade inferior no mobile para misturar com fundo escuro */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-section-dark-bg via-section-dark-bg/90 to-transparent md:hidden"
             />
           </div>
         </div>

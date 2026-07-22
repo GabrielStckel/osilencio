@@ -86,7 +86,7 @@ export function Hero(props: HeroProps) {
         </div>
 
         {/* Coluna imagem: fundo no mobile, lateral no desktop */}
-        <div className="absolute inset-x-0 top-0 z-0 h-[52vh] md:static md:col-span-6 md:h-auto md:self-end">
+        <div className="absolute inset-x-0 top-0 z-0 h-[46vh] md:static md:col-span-6 md:h-auto md:self-end">
           <div className="relative mx-auto h-full w-full max-w-[520px] md:max-w-none md:ml-auto md:h-[100vh]">
             {/* Sombra da foto projetada no fundo do hero */}
             <img
@@ -96,7 +96,7 @@ export function Hero(props: HeroProps) {
               alt=""
               aria-hidden
               loading="eager"
-              className="absolute inset-0 h-full w-full object-cover object-[center_top] md:object-contain md:object-right-bottom"
+              className="absolute inset-0 h-full w-full object-contain object-top md:object-contain md:object-right-bottom"
               style={{
                 filter: "blur(50px) brightness(0.25) saturate(0)",
                 opacity: 0.35,

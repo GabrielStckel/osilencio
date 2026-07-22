@@ -116,7 +116,7 @@ export function Hero(props: HeroProps) {
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              className="absolute inset-0 h-full w-full object-cover object-[center_top] md:object-contain md:object-right-bottom"
+              className="absolute inset-0 h-full w-full object-contain object-top md:object-contain md:object-right-bottom"
               style={{
                 WebkitMaskImage:
                   "radial-gradient(75% 100% at 50% 0%, black 35%, transparent 80%)",

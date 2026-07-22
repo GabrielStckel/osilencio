@@ -132,7 +132,6 @@ export function Hero(props: HeroProps) {
             />
           </div>
         </div>
-        </div>
       </div>
     </section>
   );

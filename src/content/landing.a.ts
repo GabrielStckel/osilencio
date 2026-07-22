@@ -21,8 +21,12 @@ export const landingContentA: LandingContent = {
     h1: "Você passa o dia inteiro pensando em problemas que não consegue resolver.",
     subtitulo:
       "Sua mente não para. Preocupação. Ansiedade. Falta de foco. Memória fraca. Cansaço mental. Você já tentou de tudo. Meditação. Terapia. Remédios. Nada funciona de verdade. Porque você está tratando o sintoma, não a causa.",
+    subtituloMobile:
+      "Sua mente não para, e você já tentou de tudo — meditação, terapia, remédios — sem resultado real, porque o problema não é o sintoma, é a causa.",
     apoio:
       "Existe uma razão profunda pela qual sua mente não consegue descansar. E existe uma solução que realmente funciona. Junte-se a nós em uma Imersão de 2 Noites onde você vai descobrir por que sua mente funciona assim — e como mudar isso para sempre.",
+    apoioMobile:
+      "Nesta Imersão de 2 Noites você vai descobrir por que sua mente funciona assim e como mudar isso para sempre.",
     cta: "QUERO GARANTIR MINHA VAGA — R$ 47",
     microtexto: "Vagas limitadas a 150 pessoas.",
     pilulas: [

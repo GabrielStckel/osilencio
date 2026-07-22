@@ -35,17 +35,17 @@ export function SectionListaVermelha({ fundo, titulo, itens, fechamento }: Props
 
       <div className="relative mx-auto max-w-3xl">
         <Reveal>
-          <h2 className="font-display font-semibold leading-tight text-[clamp(2rem,4.5vw,3rem)]">
+          <h2 className="whitespace-pre-line text-balance font-display text-[clamp(1.5rem,4vw,2rem)] font-semibold leading-tight md:text-[clamp(1.5rem,2.6vw,2rem)]">
             {titulo}
           </h2>
         </Reveal>
 
-        <ul className="mt-10 space-y-4 md:mt-14">
+        <ul className="mt-8 grid gap-4 sm:grid-cols-2 md:mt-10">
           {itens.map((item, i) => (
             <Reveal as="li" key={item}>
-              <div className="flex items-start gap-4 rounded-lg border border-white/10 bg-white/5 p-5 md:p-6">
-                <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/15">
-                  <Check className="h-4 w-4" aria-hidden />
+              <div className="flex h-full items-start gap-3 rounded-lg border border-white/5 bg-white/[0.03] p-4 md:p-5">
+                <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/10">
+                  <Check className="h-3.5 w-3.5" aria-hidden />
                 </span>
                 <div className="flex-1">
                   <span
@@ -62,7 +62,7 @@ export function SectionListaVermelha({ fundo, titulo, itens, fechamento }: Props
         </ul>
 
         <Reveal>
-          <p className="mt-10 text-base leading-relaxed opacity-90 sm:text-[17px]">
+          <p className="mt-8 text-base leading-relaxed opacity-90 sm:text-[17px] md:mt-10">
             {fechamento}
           </p>
         </Reveal>

@@ -1,15 +1,18 @@
-# Ajuste do hero: aumentar ainda mais a foto do especialista
+# Ajuste do hero: fade inferior e sombra da foto no fundo
 
 ## Objetivo
-Aumentar a foto do apresentador na seção `Hero` em desktop ainda mais do que no último ajuste (`md:h-[96vh]`), **sem alterar** nenhum outro elemento do hero (texto, cores, gradientes, CTA, espaçamentos de texto, badge, etc.).
+1. Eliminar o aspecto de "linha reta" na base da foto do especialista, suavizando o fade inferior.
+2. Adicionar uma sombra/projeção sutil da foto do especialista no fundo do hero, aumentando profundidade e integração visual.
 
-## Alteração planejada
-- Em `src/components/landing/Hero.tsx`, aumentar a altura do container da imagem na coluna direita, indo além de `md:h-[96vh]` para aproximadamente `md:h-[110vh]` ou um valor que ainda respeite a máscara de fade inferior e a posição à direita.
+## Alterações planejadas
+- Em `src/components/landing/Hero.tsx`:
+  - Ajustar a `mask-image` do `<img>` para um fade inferior mais suave e gradual, evitando a sensação de corte reto.
+  - Adicionar um elemento de sombra (por exemplo, uma camada blur da imagem ou um gradiente de sombra) posicionada atrás da foto, com baixa opacidade e desfoque, para criar a projeção no fundo.
 
 ## Como testar
-1. Ajustar o valor de altura da imagem no hero.
-2. Verificar no preview se a imagem ficou maior, ainda se dissolve na base e não corta de forma dura.
-3. Rodar `bun run build` para confirmar que não houve regressão.
+1. Verificar no preview se a base da foto desaparece suavemente sem linha reta.
+2. Confirmar que o fundo ganha uma sombra/reflexo sutil da imagem, sem competir com o texto.
+3. Rodar `bun run build` para garantir que não houve regressão.
 
 ## Risco
-Praticamente zero — é ajuste de dimensão localizado na imagem.
+Baixo — alterações visuais isoladas no hero, sem impacto em funcionalidade ou dados.

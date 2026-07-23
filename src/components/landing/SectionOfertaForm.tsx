@@ -150,8 +150,9 @@ export function SectionOfertaForm({
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
           <span className="inline-block rounded-pill border border-red-accent/40 bg-red-accent/10 px-3 py-1 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-red-accent">
-            Imersão · 2 noites ao vivo
+            {pill}
           </span>
+
           <h2 className="mx-auto mt-4 max-w-[18ch] whitespace-pre-line font-display font-semibold leading-[1.08] text-[clamp(1.6rem,6.8vw,2.35rem)] md:text-[clamp(1.75rem,3.4vw,2.6rem)]">
             {section.titulo}
           </h2>

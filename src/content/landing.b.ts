@@ -25,7 +25,7 @@ export const landingContentB: LandingContent = {
       "Existe uma razão profunda pela qual sua mente não consegue descansar. E existe uma solução que realmente funciona. Junte-se a nós em uma Imersão de 2 Noites onde você vai descobrir por que sua mente funciona assim — e como mudar isso para sempre.",
     subtituloMobile:
       "Sua mente não para, e você já tentou de tudo — meditação, terapia, remédios — sem resultado real, porque o problema não é o sintoma, é a causa. Nesta Imersão de 2 Noites você vai descobrir por que sua mente funciona assim e como mudar isso para sempre.",
-    datas: "11 e 12 de agosto · 19h30 às 21h30 (Brasília)",
+    datas: "11 e 12 de agosto · 19h30 às 21h30",
     cta: "Garantir minha vaga - R$ 27",
     microtexto: "Vagas limitadas a 150 pessoas.",
     pilulas: [
@@ -118,7 +118,7 @@ export const landingContentB: LandingContent = {
         nome: "Imersão O Silêncio — \u00a0\n2 Noites ao Vivo",
         preco: "R$ 27,00",
         inclui: "Acesso às 2 noites ao vivo pelo Zoom",
-        datas: "11 e 12 de agosto · 19h30 às 21h30 (Brasília)",
+        datas: "11 e 12 de agosto · 19h30 às 21h30",
       },
       cta: "INSCREVER-SE AGORA — R$ 27",
       urgencia: "Vagas limitadas · Inscrições encerram em 10 de agosto.",

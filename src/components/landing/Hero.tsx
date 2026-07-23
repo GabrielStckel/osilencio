@@ -1,8 +1,17 @@
 import { Calendar, Monitor, Ticket, Users } from "lucide-react";
 import type { Hero as HeroProps, HeroPilula } from "@/content/landing.types";
 import { CHECKOUT_URL } from "@/lib/config";
+import apresentador540Avif from "@/assets/apresentador-540.avif.asset.json";
+import apresentador1080Avif from "@/assets/apresentador-1080.avif.asset.json";
+import apresentador540Webp from "@/assets/apresentador-540.webp.asset.json";
+import apresentador1080Webp from "@/assets/apresentador-1080.webp.asset.json";
+
+const AVIF_SRCSET = `${apresentador540Avif.url} 540w, ${apresentador1080Avif.url} 1080w`;
+const WEBP_SRCSET = `${apresentador540Webp.url} 540w, ${apresentador1080Webp.url} 1080w`;
+const IMG_SIZES = "(max-width: 768px) 90vw, 520px";
 
 const ICONS = { calendar: Calendar, monitor: Monitor, users: Users } as const;
+
 
 function Pilula({ icon, label }: HeroPilula) {
   const Icon = ICONS[icon];

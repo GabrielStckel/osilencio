@@ -141,7 +141,10 @@ export function SectionOfertaForm({
     <SectionShell fundo={section.fundo} id="inscricao">
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
-          <h2 className="mx-auto max-w-[18ch] whitespace-pre-line font-display font-semibold leading-[1.12] text-[clamp(1.75rem,4.2vw,2.5rem)]">
+          <span className="inline-block rounded-pill border border-red-accent/40 bg-red-accent/10 px-3 py-1 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-red-accent">
+            Imersão · 2 noites ao vivo
+          </span>
+          <h2 className="mx-auto mt-4 max-w-[18ch] whitespace-pre-line font-display font-semibold leading-[1.12] text-[clamp(1.75rem,4.2vw,2.5rem)]">
             {section.titulo}
           </h2>
         </Reveal>
@@ -155,44 +158,63 @@ export function SectionOfertaForm({
         </Reveal>
 
         <Reveal>
-          <article className="relative mx-auto w-full max-w-xl rounded-xl border-2 border-red-accent/60 bg-surface-dark/70 p-7 shadow-2xl shadow-red-deep/40 sm:p-8">
-            <span className="absolute -top-3 left-6 inline-flex items-center rounded-pill bg-red-accent px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-on-red shadow-md shadow-red-deep/50">
-              Oferta
-            </span>
-            <h3 className="mt-2 whitespace-pre-line font-sans text-2xl font-semibold leading-tight">
-              {section.cardOferta.nome}
-            </h3>
+          <article className="relative mx-auto w-full max-w-xl overflow-hidden rounded-2xl border border-red-accent/40 bg-surface-dark/80 p-7 shadow-[0_0_60px_-12px_rgba(200,40,40,0.45)] backdrop-blur-xl sm:p-8">
+            <div
+              className="pointer-events-none absolute -bottom-16 -left-16 h-40 w-40 rounded-full blur-3xl"
+              style={{ background: "rgba(200,40,40,0.18)" }}
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute -top-20 -right-20 h-44 w-44 rounded-full blur-3xl"
+              style={{ background: "rgba(200,40,40,0.12)" }}
+              aria-hidden
+            />
 
-            <div className="mt-6">
-              <Preco valor={section.cardOferta.preco} />
-              <p className="mt-1 text-xs uppercase tracking-widest opacity-60">
-                Pagamento único
-              </p>
+            <div className="absolute top-0 right-0">
+              <div className="rounded-bl-xl bg-red-accent px-4 py-1.5 font-sans text-[10px] font-black uppercase tracking-widest text-on-red">
+                Oferta
+              </div>
             </div>
 
-            {inclui.length > 0 && (
-              <ul className="mt-6 space-y-2.5">
-                {inclui.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm">
-                    <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-accent/20 text-red-accent">
-                      <Check className="h-3 w-3" aria-hidden />
-                    </span>
-                    <span className="opacity-90">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
+            <div className="relative">
+              <h3 className="whitespace-pre-line pr-20 font-sans text-2xl font-semibold leading-tight">
+                {section.cardOferta.nome}
+              </h3>
 
-            <a
-              href={CHECKOUT_URL}
-              className="mt-7 inline-flex min-h-[52px] w-full items-center justify-center rounded-cta bg-red-primary px-6 text-sm font-bold uppercase tracking-wide text-on-red transition-colors hover:bg-red-primary-hover"
-            >
-              {section.cta}
-            </a>
+              <div className="mt-6">
+                <Preco valor={section.cardOferta.preco} />
+                <p className="mt-1 font-sans text-xs uppercase tracking-widest opacity-60">
+                  Pagamento único
+                </p>
+              </div>
 
-            <p className="mt-5 border-t border-white/10 pt-4 text-xs opacity-70">
-              {section.urgencia}
-            </p>
+              {inclui.length > 0 && (
+                <ul className="mt-6 space-y-2.5">
+                  {inclui.map((item) => (
+                    <li key={item} className="flex items-start gap-2.5 text-sm">
+                      <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-accent/20 text-red-accent">
+                        <Check className="h-3 w-3" aria-hidden />
+                      </span>
+                      <span className="opacity-90">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              <a
+                href={CHECKOUT_URL}
+                className="mt-7 inline-flex min-h-[52px] w-full items-center justify-center rounded-cta bg-red-primary px-6 font-sans text-sm font-bold uppercase tracking-wide text-on-red shadow-lg shadow-red-deep/40 transition-all hover:bg-red-primary-hover active:scale-[0.99]"
+              >
+                {section.cta}
+              </a>
+
+              <div className="mt-5 flex items-center justify-center gap-2 border-t border-white/10 pt-4">
+                <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-red-accent" aria-hidden />
+                <p className="font-sans text-xs opacity-70">
+                  {section.urgencia}
+                </p>
+              </div>
+            </div>
           </article>
         </Reveal>
       </div>

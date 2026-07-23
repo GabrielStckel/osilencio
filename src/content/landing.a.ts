@@ -103,7 +103,7 @@ export const landingContentA: LandingContent = {
       cards: [
         { icon: "calendar", label: "11 e 12 de agosto, das 19h30 às 21h30" },
         { icon: "monitor", label: "Online e ao vivo, pelo Zoom" },
-        { icon: "users", label: "Vagas limitadas a 150 pessoas" },
+        { icon: "users", label: "Vagas limitadas" },
       ],
       texto:
         "Você vai aprender a verdadeira causa do seu sofrimento mental e como mudar seu modo de funcionamento para ter paz, clareza e presença na vida.",

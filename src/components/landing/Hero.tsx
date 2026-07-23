@@ -1,6 +1,7 @@
 import { Calendar, Monitor, Ticket, Users } from "lucide-react";
 import type { Hero as HeroProps, HeroPilula } from "@/content/landing.types";
 import { CHECKOUT_URL } from "@/lib/config";
+import { ReservationProgress } from "@/components/ReservationProgress";
 import apresentador540Avif from "@/assets/apresentador-540.avif.asset.json";
 import apresentador1080Avif from "@/assets/apresentador-1080.avif.asset.json";
 import apresentador540Webp from "@/assets/apresentador-540.webp.asset.json";
@@ -25,47 +26,60 @@ function Pilula({ icon, label }: HeroPilula) {
 
 export function Hero(props: HeroProps) {
   return (
-    <section className="relative overflow-hidden bg-section-dark-bg pb-12 text-section-dark-fg md:min-h-[88vh] md:pb-0 md:pt-[6.5rem]">
-      {/* Base gradiente sutil para dar profundidade sem apagar */}
+    <section className="relative overflow-hidden bg-section-dark-bg px-5 py-10 text-section-dark-fg min-h-[100svh] md:min-h-[88vh] md:px-0 md:py-0 md:pb-0 md:pt-[6.5rem]">
+      {/* Imagem de fundo mobile */}
+      <img
+        src={apresentador540Webp.url}
+        alt=""
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover object-top md:hidden"
+      />
+      {/* Overlay mobile para legibilidade */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0"
+        className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/75 to-black md:hidden"
+      />
+
+      {/* Base gradiente sutil para dar profundidade sem apagar (desktop) */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 hidden md:block"
         style={{
           background:
             "linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(20,10,10,0.85) 45%, rgba(45,15,15,0.7) 100%)",
         }}
       />
-      {/* Glow radial vermelho intenso atrás do apresentador */}
+      {/* Glow radial vermelho intenso atrás do apresentador (desktop) */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-y-0 right-0 w-[90%] md:w-[58%]"
+        className="pointer-events-none absolute inset-y-0 right-0 hidden w-[58%] md:block"
         style={{
           background:
             "radial-gradient(60% 60% at 55% 48%, var(--red-accent) 0%, transparent 55%), radial-gradient(45% 45% at 50% 42%, var(--red-deep) 0%, transparent 60%), radial-gradient(25% 22% at 48% 38%, rgba(255,60,50,0.35) 0%, transparent 70%)",
           opacity: 0.85,
         }}
       />
-      {/* Vinheta suave nas bordas para manter foco no centro */}
+      {/* Vinheta suave nas bordas para manter foco no centro (desktop) */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 hidden md:block"
         style={{
           background:
             "radial-gradient(110% 85% at 25% 35%, transparent 55%, rgba(0,0,0,0.35) 100%)",
         }}
       />
 
-      <div className="relative mx-auto grid w-full max-w-6xl items-start gap-10 px-5 pt-[340px] sm:px-8 sm:pt-[360px] md:grid-cols-12 md:gap-6 md:pt-0">
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl items-start gap-10 md:px-8 md:grid-cols-12 md:gap-6">
         {/* Coluna texto */}
         <div className="relative z-10 md:col-span-6 md:pr-4">
           <span className="inline-block rounded-pill border border-red-accent/60 bg-red-accent/20 px-4 py-2 text-[14px] font-bold uppercase tracking-[0.06em] text-on-red shadow-[0_2px_12px_rgba(0,0,0,0.4)] md:text-[11px] md:font-semibold md:tracking-widest md:py-1 md:px-3 md:bg-red-accent/10 md:text-red-accent">
             {props.badge}
           </span>
-          <h1 className="mt-5 whitespace-pre-line font-display font-semibold leading-[1.08] text-section-dark-fg text-[clamp(1.6rem,6.8vw,2.35rem)] md:mt-3 md:text-[clamp(1.75rem,3.4vw,2.6rem)] md:leading-[1.08]" style={{ textShadow: "var(--text-shadow-hero)" }}>
+          <h1 className="mt-5 whitespace-pre-line font-display font-semibold text-section-dark-fg text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.15] [text-wrap:balance] md:mt-3 md:text-[clamp(1.75rem,3.4vw,2.6rem)] md:leading-[1.08]" style={{ textShadow: "var(--text-shadow-hero)" }}>
             {props.h1}
           </h1>
           {props.subtituloMobile && (
-            <p className="md:hidden mt-4 text-justify text-[15px] leading-[1.55] text-section-dark-fg/85" style={{ textShadow: "var(--text-shadow-hero)" }}>
+            <p className="md:hidden mt-4 text-left max-w-none text-[15px] leading-relaxed text-section-dark-fg/85" style={{ textShadow: "var(--text-shadow-hero)" }}>
               {props.subtituloMobile}
             </p>
           )}
@@ -76,16 +90,20 @@ export function Hero(props: HeroProps) {
             {props.apoio}
           </p>
 
+          <div className="mt-7 w-full max-w-[420px] md:mt-5 md:max-w-[380px]">
+            <a
+              href={CHECKOUT_URL}
+              className="flex w-full min-h-[56px] items-center justify-center gap-2 rounded-cta bg-red-primary px-6 py-4 text-base font-bold uppercase tracking-wide text-on-red shadow-lg shadow-red-deep/40 transition-colors whitespace-nowrap hover:bg-red-primary-hover md:text-[15px]"
+            >
+              <Ticket className="h-4 w-4" aria-hidden />
+              {props.cta}
+            </a>
+            <div className="mt-4">
+              <ReservationProgress />
+            </div>
+          </div>
 
-          <a
-            href={CHECKOUT_URL}
-            className="mt-7 inline-flex min-h-[52px] items-center justify-center gap-2 rounded-cta bg-red-primary px-6 text-sm font-bold uppercase tracking-wide text-on-red shadow-lg shadow-red-deep/40 transition-colors hover:bg-red-primary-hover md:mt-5 md:min-h-[56px] md:text-[15px]"
-          >
-            <Ticket className="h-4 w-4" aria-hidden />
-            {props.cta}
-          </a>
-
-          <ul className="mt-8 flex flex-wrap gap-2 md:mt-4">
+          <ul className="mt-8 flex flex-wrap justify-start gap-2 text-xs md:mt-4">
             {props.pilulas.map((p) => (
               <li key={p.label} className={p.hiddenMobile ? "hidden md:block" : ""}>
                 <Pilula {...p} />
@@ -93,34 +111,6 @@ export function Hero(props: HeroProps) {
             ))}
           </ul>
         </div>
-
-        {/* Imagem mobile: presença ampla, rosto livre acima do título */}
-        <div className="absolute inset-x-0 top-0 z-0 h-[560px] overflow-hidden md:hidden">
-          <div className="relative h-full w-full">
-            <picture>
-              <source type="image/avif" srcSet={AVIF_SRCSET} sizes={IMG_SIZES} />
-              <source type="image/webp" srcSet={WEBP_SRCSET} sizes={IMG_SIZES} />
-              <img
-                src={props.imagem.src}
-                width={props.imagem.width}
-                height={props.imagem.height}
-                alt={props.imagem.alt}
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-                className="absolute left-[54%] top-0 h-auto w-[520px] max-w-none -translate-x-1/2"
-                style={{
-                  WebkitMaskImage:
-                     "linear-gradient(to bottom, black 0px, black 260px, rgba(0,0,0,0.92) 310px, rgba(0,0,0,0.55) 390px, rgba(0,0,0,0.16) 475px, transparent 545px)",
-                  maskImage:
-                     "linear-gradient(to bottom, black 0px, black 260px, rgba(0,0,0,0.92) 310px, rgba(0,0,0,0.55) 390px, rgba(0,0,0,0.16) 475px, transparent 545px)",
-                }}
-              />
-            </picture>
-
-          </div>
-        </div>
-
 
         {/* Imagem desktop preservada */}
         <div className="hidden md:static md:col-span-6 md:block md:h-auto md:self-end">

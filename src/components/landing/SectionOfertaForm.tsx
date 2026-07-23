@@ -2,6 +2,7 @@ import { Check } from "lucide-react";
 import type { SectionOfertaForm as Props, Variante } from "@/content/landing.types";
 import { CHECKOUT_URL } from "@/lib/config";
 import { Reveal } from "./Reveal";
+import { ReservationProgress } from "@/components/ReservationProgress";
 import { SectionShell } from "./SectionShell";
 import apresentador540Avif from "@/assets/apresentador-540.avif.asset.json";
 import apresentador1080Avif from "@/assets/apresentador-1080.avif.asset.json";
@@ -74,7 +75,7 @@ function DeviceMockups() {
       </div>
 
       {/* Celular sobreposto */}
-      <div className="absolute top-[15%] right-[-4%] z-10 w-[42%] min-w-[150px] sm:right-[-6%] sm:w-[48%]">
+      <div className="absolute top-[15%] right-0 z-10 w-[38%] min-w-[130px] sm:right-[-6%] sm:w-[48%]">
         <div className="relative aspect-[9/19] w-full rounded-[22px] border border-white/20 bg-neutral-900 p-[3px] shadow-2xl shadow-black/70">
           <div className="relative h-full w-full overflow-hidden rounded-[19px] bg-black">
             {/* Notch */}
@@ -158,7 +159,7 @@ export function SectionOfertaForm({
         </Reveal>
 
         <Reveal>
-          <article className="relative mx-auto w-full max-w-xl overflow-hidden rounded-2xl border border-red-accent/40 bg-surface-dark/80 p-7 shadow-[0_0_60px_-12px_rgba(200,40,40,0.45)] backdrop-blur-xl sm:p-8">
+          <article className="relative mx-auto w-full max-w-xl overflow-hidden rounded-2xl border border-red-accent/40 bg-surface-dark/80 p-6 shadow-[0_0_60px_-12px_rgba(200,40,40,0.45)] backdrop-blur-xl sm:p-7 md:p-8">
             <div
               className="pointer-events-none absolute -bottom-16 -left-16 h-40 w-40 rounded-full blur-3xl"
               style={{ background: "rgba(200,40,40,0.18)" }}
@@ -177,16 +178,16 @@ export function SectionOfertaForm({
             </div>
 
             <div className="relative text-center">
-              <h3 className="whitespace-pre-line px-2 font-sans text-2xl font-semibold leading-tight">
+              <h3 className="whitespace-pre-line px-2 font-sans font-semibold leading-tight text-balance text-[clamp(1.25rem,5.5vw,1.75rem)]">
                 {section.cardOferta.nome}
               </h3>
 
-              <div className="mt-6">
+              <div className="mt-6 flex items-baseline justify-center flex-nowrap">
                 <Preco valor={section.cardOferta.preco} />
-                <p className="mt-1 font-sans text-xs uppercase tracking-widest opacity-60">
-                  Pagamento único
-                </p>
               </div>
+              <p className="mt-1 font-sans text-xs uppercase tracking-widest opacity-60">
+                Pagamento único
+              </p>
 
               {inclui.length > 0 && (
                 <ul className="mt-6 inline-flex flex-col items-start gap-2.5 text-left text-sm">
@@ -209,17 +210,22 @@ export function SectionOfertaForm({
 
               <a
                 href={CHECKOUT_URL}
-                className="mt-7 inline-flex min-h-[52px] w-full items-center justify-center rounded-cta bg-red-primary px-6 font-sans text-sm font-bold uppercase tracking-wide text-on-red shadow-lg shadow-red-deep/40 transition-all hover:bg-red-primary-hover active:scale-[0.99]"
+                className="mt-7 inline-flex min-h-[56px] w-full items-center justify-center rounded-cta bg-red-primary px-4 py-4 text-center font-sans text-[13px] font-bold uppercase tracking-wide text-on-red shadow-lg shadow-red-deep/40 transition-all hover:bg-red-primary-hover active:scale-[0.99] md:text-sm md:px-6"
               >
                 {section.cta}
               </a>
 
-              <div className="mt-5 flex items-center justify-center gap-2 border-t border-white/10 pt-4">
+              <div className="mt-5 mb-5">
+                <ReservationProgress variant="compact" />
+              </div>
+
+              <div className="flex items-center justify-center gap-2 border-t border-white/10 pt-4">
                 <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-red-accent" aria-hidden />
                 <p className="font-sans text-xs opacity-70">
                   {section.urgencia}
                 </p>
               </div>
+
             </div>
           </article>
         </Reveal>

@@ -11,14 +11,15 @@ function getPct() {
   return Math.round(START_PCT + (END_PCT - START_PCT) * c);
 }
 
-export function ReservationProgress() {
+type Props = { variant?: "default" | "compact" };
+
+export function ReservationProgress({ variant = "default" }: Props) {
   const [pct, setPct] = useState<number>(() => getPct());
   const [barWidth, setBarWidth] = useState<number>(0);
 
   useEffect(() => {
     const current = getPct();
     setPct(current);
-    // Anima 0 -> pct em ~1.2s no primeiro paint
     const raf = requestAnimationFrame(() => setBarWidth(current));
 
     const id = window.setInterval(() => {
@@ -33,13 +34,20 @@ export function ReservationProgress() {
     };
   }, []);
 
+  const compact = variant === "compact";
+  const trackH = compact ? "h-2" : "h-2.5";
+  const labelCls = compact
+    ? "text-[11px] uppercase tracking-wide text-white/60"
+    : "text-xs uppercase tracking-wide text-white/60";
+  const pctCls = compact
+    ? "text-xs font-bold text-red-400"
+    : "text-sm font-bold text-red-400";
+
   return (
-    <div className="w-full">
+    <div className={compact ? "w-full mt-0" : "w-full"}>
       <div className="mb-2 flex items-center justify-between">
-        <span className="text-xs uppercase tracking-wide text-white/60">
-          Vagas reservadas
-        </span>
-        <span className="text-sm font-bold text-red-400">{pct}%</span>
+        <span className={labelCls}>Vagas reservadas</span>
+        <span className={pctCls}>{pct}%</span>
       </div>
       <div
         role="progressbar"
@@ -47,7 +55,7 @@ export function ReservationProgress() {
         aria-valuemin={0}
         aria-valuemax={100}
         aria-label="Vagas reservadas"
-        className="relative h-2.5 w-full overflow-hidden rounded-full border border-white/5 bg-white/10"
+        className={`relative ${trackH} w-full overflow-hidden rounded-full border border-white/5 bg-white/10`}
       >
         <div
           className="relative h-full overflow-hidden rounded-full bg-gradient-to-r from-red-700 via-red-500 to-red-400 transition-all duration-1000 ease-out"
@@ -62,9 +70,11 @@ export function ReservationProgress() {
           />
         </div>
       </div>
-      <p className="mt-2 text-[11px] text-white/45">
-        Restam apenas {100 - pct}% das vagas · Encerra 10 de agosto
-      </p>
+      {!compact && (
+        <p className="mt-2 text-[11px] text-white/45">
+          Restam apenas {100 - pct}% das vagas · Encerra 10 de agosto
+        </p>
+      )}
     </div>
   );
 }

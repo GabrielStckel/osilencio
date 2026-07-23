@@ -87,6 +87,12 @@ export function Hero(props: HeroProps) {
           <h1 className="mt-5 whitespace-pre-line font-display font-semibold text-section-dark-fg text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.15] md:mt-3 md:text-[clamp(1.75rem,3.4vw,2.6rem)] md:leading-[1.08]" style={{ textShadow: "var(--text-shadow-hero)" }}>
             {props.h1}
           </h1>
+          {props.datas && (
+            <div className="mt-4 inline-flex items-center gap-2 rounded-pill border border-red-accent/60 bg-red-accent/15 px-3.5 py-1.5 font-sans text-[12px] font-semibold text-section-dark-fg shadow-[0_2px_12px_rgba(0,0,0,0.35)] md:mt-3 md:text-[13px]">
+              <Calendar className="h-3.5 w-3.5 text-red-accent" aria-hidden />
+              <span>{props.datas}</span>
+            </div>
+          )}
           {props.subtituloMobile && (
             <p className="md:hidden mt-4 text-left max-w-none text-[15px] leading-relaxed text-section-dark-fg/85" style={{ textShadow: "var(--text-shadow-hero)" }}>
               {props.subtituloMobile}

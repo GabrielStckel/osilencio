@@ -190,6 +190,13 @@ export function SectionOfertaForm({
                 {section.cardOferta.nome}
               </h3>
 
+              {section.cardOferta.datas && (
+                <div className="mt-4 inline-flex items-center gap-2 rounded-pill border border-red-accent/50 bg-red-accent/10 px-3.5 py-1.5 font-sans text-[12px] font-semibold text-white/90 md:text-[13px]">
+                  <Check className="h-3.5 w-3.5 text-red-accent" aria-hidden />
+                  <span>{section.cardOferta.datas}</span>
+                </div>
+              )}
+
               <div className="mt-6 flex items-baseline justify-center flex-nowrap">
                 <Preco valor={section.cardOferta.preco} />
               </div>

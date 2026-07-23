@@ -23,6 +23,7 @@ export type Hero = {
   subtitulo: string;
   apoio: string;
   subtituloMobile?: string;
+  datas?: string;
   cta: string;
   microtexto: string;
   pilulas: HeroPilula[];
@@ -84,6 +85,7 @@ export type SectionOfertaForm = {
     nome: string;
     preco: string;
     inclui: string;
+    datas?: string;
   };
   cta: string;
   urgencia: string;

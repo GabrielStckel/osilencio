@@ -41,8 +41,9 @@ export function Landing({ content }: { content: LandingContent }) {
             );
           case "ofertaForm":
             return (
-              <SectionOfertaForm key={key} section={s} variante={content.variante} />
+              <SectionOfertaForm key={key} section={s} variante={content.variante} checkoutUrl={content.checkoutUrl} />
             );
+
           case "faq":
             return <SectionFaq key={key} {...s} />;
           case "rodape":

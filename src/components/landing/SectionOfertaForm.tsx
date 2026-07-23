@@ -74,7 +74,7 @@ function DeviceMockups() {
       </div>
 
       {/* Celular sobreposto */}
-      <div className="absolute top-[30%] right-[-4%] z-10 w-[42%] min-w-[150px] sm:right-[-6%] sm:w-[48%]">
+      <div className="absolute top-[15%] right-[-4%] z-10 w-[42%] min-w-[150px] sm:right-[-6%] sm:w-[48%]">
         <div className="relative aspect-[9/19] w-full rounded-[22px] border border-white/20 bg-neutral-900 p-[3px] shadow-2xl shadow-black/70">
           <div className="relative h-full w-full overflow-hidden rounded-[19px] bg-black">
             {/* Notch */}

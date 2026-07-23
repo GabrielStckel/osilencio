@@ -12,6 +12,8 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import lora700Url from "@fontsource/lora/files/lora-latin-700-normal.woff2?url";
 import inter400Url from "@fontsource/inter/files/inter-latin-400-normal.woff2?url";
+import apresentador540Avif from "@/assets/apresentador-540.avif.asset.json";
+import apresentador1080Avif from "@/assets/apresentador-1080.avif.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {

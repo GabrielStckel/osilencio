@@ -133,18 +133,26 @@ function Preco({ valor }: { valor: string }) {
 
 export function SectionOfertaForm({
   section,
+  variante,
+  checkoutUrl,
 }: {
   section: Props;
   variante: Variante;
+  checkoutUrl?: string;
 }) {
   const inclui = [section.cardOferta.inclui].filter(Boolean);
+  const href = checkoutUrl ?? CHECKOUT_URL;
+  const pill = variante === "B" ? "Oferta exclusiva para membros do ACS" : "Imersão · 2 noites ao vivo";
+
   return (
     <SectionShell fundo={section.fundo} id="oferta">
+
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
           <span className="inline-block rounded-pill border border-red-accent/40 bg-red-accent/10 px-3 py-1 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-red-accent">
-            Imersão · 2 noites ao vivo
+            {pill}
           </span>
+
           <h2 className="mx-auto mt-4 max-w-[18ch] whitespace-pre-line font-display font-semibold leading-[1.08] text-[clamp(1.6rem,6.8vw,2.35rem)] md:text-[clamp(1.75rem,3.4vw,2.6rem)]">
             {section.titulo}
           </h2>
@@ -209,7 +217,8 @@ export function SectionOfertaForm({
               )}
 
               <a
-                href={CHECKOUT_URL}
+                href={href}
+
                 className="mt-7 inline-flex min-h-[56px] w-full items-center justify-center rounded-cta bg-red-primary px-4 py-4 text-center font-sans text-[13px] font-bold uppercase tracking-wide text-on-red shadow-lg shadow-red-deep/40 transition-all hover:bg-red-primary-hover active:scale-[0.99] md:text-sm md:px-6"
               >
                 {section.cta}

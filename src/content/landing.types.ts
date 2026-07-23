@@ -129,4 +129,6 @@ export type LandingContent = {
   hero: Hero;
   sections: LandingSection[];
   ctaBar: CtaBar;
+  checkoutUrl?: string;
 };
+

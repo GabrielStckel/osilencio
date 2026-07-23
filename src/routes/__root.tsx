@@ -12,6 +12,8 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import lora700Url from "@fontsource/lora/files/lora-latin-700-normal.woff2?url";
 import inter400Url from "@fontsource/inter/files/inter-latin-400-normal.woff2?url";
+import apresentador540Avif from "@/assets/apresentador-540.avif.asset.json";
+import apresentador1080Avif from "@/assets/apresentador-1080.avif.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -91,6 +93,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/32e56e9f-4807-4f8f-b142-3a9e9ca65220/id-preview-914132eb--e13becff-9c7b-44f7-b582-a6aad03b7b71.lovable.app-1784649919185.png" },
     ],
     links: [
+      {
+        rel: "preload",
+        as: "image",
+        href: apresentador1080Avif.url,
+        type: "image/avif",
+        imageSrcSet: `${apresentador540Avif.url} 540w, ${apresentador1080Avif.url} 1080w`,
+        imageSizes: "(max-width: 768px) 90vw, 520px",
+        fetchPriority: "high",
+      },
       {
         rel: "preload",
         href: lora700Url,

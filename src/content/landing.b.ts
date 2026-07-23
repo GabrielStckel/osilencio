@@ -1,16 +1,16 @@
 import type { LandingContent } from "./landing.types";
 import apresentador from "@/assets/apresentador.png.asset.json";
 
-export const landingContentA: LandingContent = {
-  variante: "A",
+export const landingContentB: LandingContent = {
+  variante: "B",
   meta: {
-    title: "O Silêncio — Imersão de 2 Noites | Paz Mental de Verdade",
+    title: "O Silêncio — Oferta Exclusiva ACS | Imersão de 2 Noites",
     description:
-      "Imersão online de 2 noites (11 e 12 de agosto, 19h30 às 21h30) para quem sofre com mente acelerada, ansiedade e pensamento excessivo. R$ 47.",
-    ogTitle: "O Silêncio — Imersão de 2 Noites",
+      "Imersão online de 2 noites (11 e 12 de agosto, 19h30 às 21h30) para quem sofre com mente acelerada, ansiedade e pensamento excessivo. R$ 27.",
+    ogTitle: "O Silêncio — Oferta Exclusiva ACS",
     ogDescription:
-      "Descubra por que sua mente não para — e como mudar isso. 2 noites ao vivo no Zoom, 11 e 12 de agosto. R$ 47.",
-    canonicalPath: "/",
+      "Descubra por que sua mente não para — e como mudar isso. 2 noites ao vivo no Zoom, 11 e 12 de agosto. R$ 27.",
+    canonicalPath: "/exclusivoacs",
   },
   topbar: {
     marca: "O Silêncio",
@@ -25,7 +25,7 @@ export const landingContentA: LandingContent = {
       "Existe uma razão profunda pela qual sua mente não consegue descansar. E existe uma solução que realmente funciona. Junte-se a nós em uma Imersão de 2 Noites onde você vai descobrir por que sua mente funciona assim — e como mudar isso para sempre.",
     subtituloMobile:
       "Sua mente não para, e você já tentou de tudo — meditação, terapia, remédios — sem resultado real, porque o problema não é o sintoma, é a causa. Nesta Imersão de 2 Noites você vai descobrir por que sua mente funciona assim e como mudar isso para sempre.",
-    cta: "Garantir minha vaga - R$ 47",
+    cta: "Garantir minha vaga - R$ 27",
     microtexto: "Vagas limitadas a 150 pessoas.",
     pilulas: [
       { icon: "calendar", label: "2 noites ao vivo" },
@@ -115,10 +115,10 @@ export const landingContentA: LandingContent = {
       subtitulo: "Você está pronto para\u00a0\nmudar de verdade?",
       cardOferta: {
         nome: "Imersão O Silêncio — \u00a0\n2 Noites ao Vivo",
-        preco: "R$ 47,00",
+        preco: "R$ 27,00",
         inclui: "Acesso às 2 noites ao vivo pelo Zoom",
       },
-      cta: "INSCREVER-SE AGORA — R$ 47",
+      cta: "INSCREVER-SE AGORA — R$ 27",
       urgencia: "Vagas limitadas · Inscrições encerram em 10 de agosto.",
     },
     {
@@ -150,7 +150,7 @@ export const landingContentA: LandingContent = {
         {
           pergunta: "Quanto custa?",
           resposta:
-            "O ingresso é R$ 47,00 e dá acesso às duas noites ao vivo.",
+            "O ingresso é R$ 27,00 e dá acesso às duas noites ao vivo.",
         },
         {
           pergunta: "Isso substitui terapia ou tratamento médico?",
@@ -167,7 +167,7 @@ export const landingContentA: LandingContent = {
       kind: "rodape",
       fundo: "dark",
       marca: "O Silêncio",
-      cta: "GARANTIR MINHA VAGA — R$ 47",
+      cta: "GARANTIR MINHA VAGA — R$ 27",
       links: [
         { label: "Termos de Uso", href: "#termos" },
         { label: "Política de Privacidade", href: "#privacidade" },
@@ -177,6 +177,8 @@ export const landingContentA: LandingContent = {
     },
   ],
   ctaBar: {
-    label: "GARANTIR MINHA VAGA — R$ 47",
+    label: "GARANTIR MINHA VAGA — R$ 27",
   },
 };
+
+landingContentB.checkoutUrl = "https://pay.hotmart.com/R106856311C?off=dfh6fyu2";

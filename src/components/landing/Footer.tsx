@@ -1,5 +1,4 @@
 import type { SectionRodape as Props } from "@/content/landing.types";
-import { CHECKOUT_URL } from "@/lib/config";
 import { SectionShell } from "./SectionShell";
 
 export function Footer({ marca, cta, links, aviso, fundo }: Props) {

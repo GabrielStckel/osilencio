@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { CHECKOUT_URL } from "@/lib/config";
 
 type Props = { label: string };
 

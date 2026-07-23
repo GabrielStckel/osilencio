@@ -1,6 +1,5 @@
 import { Calendar, Monitor, Ticket, Users } from "lucide-react";
 import type { Hero as HeroProps, HeroPilula } from "@/content/landing.types";
-import { CHECKOUT_URL } from "@/lib/config";
 import { ReservationProgress } from "@/components/ReservationProgress";
 import apresentador540Avif from "@/assets/apresentador-540.avif.asset.json";
 import apresentador1080Avif from "@/assets/apresentador-1080.avif.asset.json";

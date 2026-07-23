@@ -159,7 +159,7 @@ export function SectionOfertaForm({
         </Reveal>
 
         <Reveal>
-          <article className="relative mx-auto w-full max-w-xl overflow-hidden rounded-2xl border border-red-accent/40 bg-surface-dark/80 p-7 shadow-[0_0_60px_-12px_rgba(200,40,40,0.45)] backdrop-blur-xl sm:p-8">
+          <article className="relative mx-auto w-full max-w-xl overflow-hidden rounded-2xl border border-red-accent/40 bg-surface-dark/80 p-6 shadow-[0_0_60px_-12px_rgba(200,40,40,0.45)] backdrop-blur-xl sm:p-7 md:p-8">
             <div
               className="pointer-events-none absolute -bottom-16 -left-16 h-40 w-40 rounded-full blur-3xl"
               style={{ background: "rgba(200,40,40,0.18)" }}

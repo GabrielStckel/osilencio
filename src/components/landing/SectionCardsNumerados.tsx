@@ -7,7 +7,7 @@ export function SectionCardsNumerados({ fundo, titulo, cards, fechamento }: Prop
     <SectionShell fundo={fundo}>
       <div className="mx-auto max-w-2xl text-center">
         <Reveal>
-          <h2 className="whitespace-pre-line font-display text-[clamp(1.5rem,4vw,2rem)] font-semibold leading-tight text-balance md:text-[clamp(1.5rem,2.6vw,2rem)]">
+          <h2 className="whitespace-pre-line text-balance font-display font-semibold leading-[1.08] text-[clamp(1.6rem,6.8vw,2.35rem)] md:text-[clamp(1.75rem,3.4vw,2.6rem)]">
             {titulo}
           </h2>
         </Reveal>

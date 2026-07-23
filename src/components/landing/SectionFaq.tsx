@@ -11,7 +11,7 @@ export function SectionFaq({ fundo, titulo, itens }: Props) {
       <div className="grid gap-10 md:grid-cols-12">
         <div className="md:col-span-4">
           <Reveal>
-            <h2 className="font-display text-[clamp(3rem,10vw,6rem)] font-semibold leading-none opacity-90">
+            <h2 className="font-display font-semibold leading-[1.08] opacity-90 text-[clamp(1.6rem,6.8vw,2.35rem)] md:text-[clamp(1.75rem,3.4vw,2.6rem)]">
               {titulo}
             </h2>
           </Reveal>

@@ -1,36 +1,27 @@
-## Ajuste textual na seção de oferta
+## Objetivo
+Padronizar o tamanho de todos os títulos de seção (`h2`) da landing para o mesmo tamanho do `h1` do Hero selecionado.
 
-### Objetivo
-Reorganizar os títulos da seção `#inscricao` (`SectionOfertaForm`) e reduzir o tamanho tipográfico dos dois textos.
+## Tamanho de referência (Hero h1)
+`text-[clamp(1.6rem,6.8vw,2.35rem)] md:text-[clamp(1.75rem,3.4vw,2.6rem)]` com `font-display font-semibold leading-[1.08]`.
 
-### Estado atual
-A seção de oferta possui um único campo `titulo` com duas frases em sequência:
+## Arquivos alterados (só a classe de tamanho/leading do h2, sem mexer em cor, margem ou copy)
+- `src/components/landing/SectionProblema.tsx` (linha 10)
+- `src/components/landing/SectionCardsNumerados.tsx` (linha 10)
+- `src/components/landing/SectionListaVermelha.tsx` (linha 25)
+- `src/components/landing/SectionDiferencial.tsx` (linha 10)
+- `src/components/landing/SectionChecklist.tsx` (linha 11)
+- `src/components/landing/SectionComoFunciona.tsx` (linha 42) — hoje está muito maior (`clamp(2.5rem,7vw,4.5rem)`), vai reduzir para o padrão
+- `src/components/landing/SectionFaq.tsx` (linha 14) — hoje está gigante (`clamp(3rem,10vw,6rem)`), vai reduzir para o padrão
+- `src/components/landing/SectionOfertaForm.tsx` (linha 147)
 
-```text
-Você está cansado de sofrer com mente acelerada?
-Você está pronto para mudar de verdade?
-```
+Em cada `h2` troco a classe de tamanho por:
+`font-display font-semibold leading-[1.08] text-[clamp(1.6rem,6.8vw,2.35rem)] md:text-[clamp(1.75rem,3.4vw,2.6rem)]`
+Mantenho `whitespace-pre-line`, `text-balance`, `max-w-*`, `mt-*` e cor onde já existirem.
 
-Esse texto é exibido no topo da seção, acima do mockup de dispositivos e do card de oferta.
+## Fora do escopo
+- Não altero o h1 do Hero.
+- Não altero textos, subtítulos, números decorativos, cards, botões ou espaçamentos verticais.
+- Não altero o título interno do card de oferta (`h3`) nem títulos pequenos dentro dos mockups.
 
-### Mudanças propostas
-
-1. **Separar o conteúdo no data source**
-   - Manter `titulo` como `"Você está cansado de sofrer com mente acelerada?"`.
-   - Adicionar novo campo `subtitulo` no tipo `SectionOfertaForm` (`src/content/landing.types.ts`) e no conteúdo de `Variante A` (`src/content/landing.a.ts`) com o valor `"Você está pronto para mudar de verdade?"`.
-
-2. **Reorganizar a renderização**
-   - Em `src/components/landing/SectionOfertaForm.tsx`, manter o `titulo` no topo da seção.
-   - Renderizar o `subtitulo` dentro do card de oferta, logo acima do botão de CTA (`INSCREVER-SE AGORA — R$ 47`) e abaixo da lista de itens inclusos.
-
-3. **Reduzir tamanho tipográfico**
-   - Diminuir o tamanho do `titulo` no topo da seção.
-   - Aplicar tamanho proporcionalmente menor ao `subtitulo` dentro do card, mantendo hierarquia visual e legibilidade.
-
-### Arquivos alterados
-- `src/content/landing.types.ts` — adicionar `subtitulo?: string` em `SectionOfertaForm`.
-- `src/content/landing.a.ts` — separar o texto em `titulo` e `subtitulo` na seção `ofertaForm`.
-- `src/components/landing/SectionOfertaForm.tsx` — ajustar posição e tamanho dos textos.
-
-### Escopo
-Apenas a seção de oferta da página `/` (Variante A). Nenhuma outra seção ou rota será modificada.
+## Observação
+O título do FAQ hoje é um elemento decorativo enorme; após o ajuste ele fica no mesmo porte dos demais. Se preferir manter o FAQ com tratamento gigante atual, me avise antes de eu implementar.

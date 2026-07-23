@@ -7,7 +7,7 @@ export function SectionProblema({ fundo, titulo, texto }: Props) {
     <SectionShell fundo={fundo}>
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
-          <h2 className="font-display text-[clamp(1.75rem,4vw,2.75rem)] font-semibold leading-tight">
+          <h2 className="font-display font-semibold leading-[1.08] text-[clamp(1.6rem,6.8vw,2.35rem)] md:text-[clamp(1.75rem,3.4vw,2.6rem)]">
             {titulo}
           </h2>
         </Reveal>

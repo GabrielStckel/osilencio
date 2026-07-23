@@ -112,7 +112,7 @@ export const landingContentA: LandingContent = {
       kind: "ofertaForm",
       fundo: "dark",
       titulo: "Você está cansado de sofrer com mente acelerada?",
-      subtitulo: "Você está pronto para mudar de verdade?",
+      subtitulo: "Você está pronto para\u00a0\nmudar de verdade?",
       cardOferta: {
         nome: "Imersão O Silêncio — \u00a0\n2 Noites ao Vivo",
         preco: "R$ 47,00",

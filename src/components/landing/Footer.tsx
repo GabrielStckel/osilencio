@@ -1,5 +1,4 @@
 import type { SectionRodape as Props } from "@/content/landing.types";
-import { CHECKOUT_URL } from "@/lib/config";
 import { SectionShell } from "./SectionShell";
 
 export function Footer({ marca, cta, links, aviso, fundo }: Props) {
@@ -8,7 +7,7 @@ export function Footer({ marca, cta, links, aviso, fundo }: Props) {
       <div className="flex flex-col items-center gap-6 border-t border-white/10 pt-10 text-center">
         <span className="font-sans text-2xl font-semibold tracking-wide">{marca}</span>
         <a
-          href={CHECKOUT_URL}
+          href="#oferta"
           className="inline-flex min-h-[52px] items-center justify-center rounded-cta bg-red-primary px-6 text-sm font-bold uppercase tracking-wide text-on-red transition-colors hover:bg-red-primary-hover"
         >
           {cta}

@@ -138,7 +138,7 @@ export function SectionOfertaForm({
 }) {
   const inclui = [section.cardOferta.inclui].filter(Boolean);
   return (
-    <SectionShell fundo={section.fundo} id="inscricao">
+    <SectionShell fundo={section.fundo} id="oferta">
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
           <span className="inline-block rounded-pill border border-red-accent/40 bg-red-accent/10 px-3 py-1 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-red-accent">

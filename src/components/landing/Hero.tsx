@@ -1,6 +1,5 @@
 import { Calendar, Monitor, Ticket, Users } from "lucide-react";
 import type { Hero as HeroProps, HeroPilula } from "@/content/landing.types";
-import { CHECKOUT_URL } from "@/lib/config";
 import { ReservationProgress } from "@/components/ReservationProgress";
 import apresentador540Avif from "@/assets/apresentador-540.avif.asset.json";
 import apresentador1080Avif from "@/assets/apresentador-1080.avif.asset.json";
@@ -102,7 +101,7 @@ export function Hero(props: HeroProps) {
 
           <div className="mt-7 w-full max-w-[420px] md:mt-5 md:max-w-[380px]">
             <a
-              href={CHECKOUT_URL}
+              href="#oferta"
               className="flex w-full min-h-[56px] items-center justify-center gap-2 rounded-cta bg-red-primary px-6 py-4 text-base font-bold uppercase tracking-wide text-on-red shadow-lg shadow-red-deep/40 transition-colors whitespace-nowrap hover:bg-red-primary-hover md:text-[15px]"
             >
               <Ticket className="h-4 w-4" aria-hidden />

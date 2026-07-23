@@ -213,7 +213,8 @@ export function SectionOfertaForm({
               )}
 
               <a
-                href={CHECKOUT_URL}
+                href={href}
+
                 className="mt-7 inline-flex min-h-[56px] w-full items-center justify-center rounded-cta bg-red-primary px-4 py-4 text-center font-sans text-[13px] font-bold uppercase tracking-wide text-on-red shadow-lg shadow-red-deep/40 transition-all hover:bg-red-primary-hover active:scale-[0.99] md:text-sm md:px-6"
               >
                 {section.cta}

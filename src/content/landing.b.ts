@@ -121,7 +121,7 @@ export const landingContentB: LandingContent = {
         datas: "11 e 12 de agosto · 19h30 às 21h30",
       },
       cta: "INSCREVER-SE AGORA — R$ 27",
-      urgencia: "Vagas limitadas · Inscrições encerram em 10 de agosto.",
+      urgencia: "Vagas limitadas · Inscrições encerram\u00a0\nem 10 de agosto.",
     },
     {
       kind: "faq",

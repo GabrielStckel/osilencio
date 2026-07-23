@@ -114,7 +114,7 @@ export const landingContentA: LandingContent = {
       titulo:
         "Você está cansado de sofrer com mente acelerada?\nVocê está pronto para mudar de verdade?",
       cardOferta: {
-        nome: "Imersão O Silêncio — 2 Noites ao Vivo",
+        nome: "Imersão O Silêncio — \u00a0\n2 Noites ao Vivo",
         preco: "R$ 47,00",
         inclui: "Acesso às 2 noites ao vivo pelo Zoom",
       },

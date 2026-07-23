@@ -184,7 +184,7 @@ export function SectionOfertaForm({
             <span className="absolute -top-3 left-6 inline-flex items-center rounded-pill bg-red-accent px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-on-red shadow-md shadow-red-deep/50">
               Oferta
             </span>
-            <h3 className="mt-2 font-sans text-2xl font-semibold leading-tight">
+            <h3 className="mt-2 whitespace-pre-line font-sans text-2xl font-semibold leading-tight">
               {section.cardOferta.nome}
             </h3>
 

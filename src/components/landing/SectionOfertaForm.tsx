@@ -144,7 +144,7 @@ export function SectionOfertaForm({
           <span className="inline-block rounded-pill border border-red-accent/40 bg-red-accent/10 px-3 py-1 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-red-accent">
             Imersão · 2 noites ao vivo
           </span>
-          <h2 className="mx-auto mt-4 max-w-[18ch] whitespace-pre-line font-display font-semibold leading-[1.12] text-[clamp(1.75rem,4.2vw,2.5rem)]">
+          <h2 className="mx-auto mt-4 max-w-[18ch] whitespace-pre-line font-display font-semibold leading-[1.18] text-[clamp(1.35rem,3.5vw,2rem)]">
             {section.titulo}
           </h2>
         </Reveal>
@@ -199,6 +199,12 @@ export function SectionOfertaForm({
                     </li>
                   ))}
                 </ul>
+              )}
+
+              {section.subtitulo && (
+                <p className="mt-6 whitespace-pre-line font-display text-lg font-semibold leading-snug text-white/90 md:text-xl">
+                  {section.subtitulo}
+                </p>
               )}
 
               <a

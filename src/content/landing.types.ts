@@ -79,6 +79,7 @@ export type SectionOfertaForm = {
   kind: "ofertaForm";
   fundo: "dark" | "light" | "red";
   titulo: string;
+  subtitulo?: string;
   cardOferta: {
     nome: string;
     preco: string;

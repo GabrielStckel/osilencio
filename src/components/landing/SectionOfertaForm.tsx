@@ -177,16 +177,16 @@ export function SectionOfertaForm({
             </div>
 
             <div className="relative text-center">
-              <h3 className="whitespace-pre-line px-2 font-sans text-2xl font-semibold leading-tight">
+              <h3 className="whitespace-pre-line px-2 font-sans font-semibold leading-tight text-balance text-[clamp(1.25rem,5.5vw,1.75rem)]">
                 {section.cardOferta.nome}
               </h3>
 
-              <div className="mt-6">
+              <div className="mt-6 flex items-baseline justify-center flex-nowrap">
                 <Preco valor={section.cardOferta.preco} />
-                <p className="mt-1 font-sans text-xs uppercase tracking-widest opacity-60">
-                  Pagamento único
-                </p>
               </div>
+              <p className="mt-1 font-sans text-xs uppercase tracking-widest opacity-60">
+                Pagamento único
+              </p>
 
               {inclui.length > 0 && (
                 <ul className="mt-6 inline-flex flex-col items-start gap-2.5 text-left text-sm">
@@ -209,17 +209,22 @@ export function SectionOfertaForm({
 
               <a
                 href={CHECKOUT_URL}
-                className="mt-7 inline-flex min-h-[52px] w-full items-center justify-center rounded-cta bg-red-primary px-6 font-sans text-sm font-bold uppercase tracking-wide text-on-red shadow-lg shadow-red-deep/40 transition-all hover:bg-red-primary-hover active:scale-[0.99]"
+                className="mt-7 inline-flex min-h-[56px] w-full items-center justify-center rounded-cta bg-red-primary px-4 py-4 text-center font-sans text-[13px] font-bold uppercase tracking-wide text-on-red shadow-lg shadow-red-deep/40 transition-all hover:bg-red-primary-hover active:scale-[0.99] md:text-sm md:px-6"
               >
                 {section.cta}
               </a>
 
-              <div className="mt-5 flex items-center justify-center gap-2 border-t border-white/10 pt-4">
+              <div className="mt-5 mb-5">
+                <ReservationProgress variant="compact" />
+              </div>
+
+              <div className="flex items-center justify-center gap-2 border-t border-white/10 pt-4">
                 <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-red-accent" aria-hidden />
                 <p className="font-sans text-xs opacity-70">
                   {section.urgencia}
                 </p>
               </div>
+
             </div>
           </article>
         </Reveal>

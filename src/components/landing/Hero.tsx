@@ -27,17 +27,27 @@ function Pilula({ icon, label }: HeroPilula) {
 export function Hero(props: HeroProps) {
   return (
     <section className="relative overflow-hidden bg-section-dark-bg px-5 pb-10 pt-56 text-section-dark-fg min-h-[100svh] md:min-h-[88vh] md:px-0 md:py-0 md:pb-0 md:pt-[6.5rem]">
+      {/* Glow radial vermelho atrás do apresentador (mobile) */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-[70svh] md:hidden"
+        style={{
+          background:
+            "radial-gradient(60% 55% at 50% 38%, var(--red-accent) 0%, transparent 62%), radial-gradient(40% 40% at 50% 32%, var(--red-deep) 0%, transparent 68%)",
+          opacity: 0.9,
+        }}
+      />
       {/* Imagem de fundo mobile */}
       <img
         src={apresentador540Webp.url}
         alt=""
         aria-hidden
-        className="absolute inset-0 h-full w-full object-cover object-top md:hidden"
+        className="absolute inset-0 h-full w-full object-contain object-top md:hidden"
       />
       {/* Overlay mobile para legibilidade */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/75 to-black md:hidden"
+        className="absolute inset-0 bg-gradient-to-b from-transparent via-black/60 to-black md:hidden"
       />
 
       {/* Base gradiente sutil para dar profundidade sem apagar (desktop) */}
@@ -47,17 +57,6 @@ export function Hero(props: HeroProps) {
         style={{
           background:
             "linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(20,10,10,0.85) 45%, rgba(45,15,15,0.7) 100%)",
-        }}
-      />
-      {/* Glow radial vermelho atrás do apresentador (mobile) */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-[65svh] md:hidden"
-        style={{
-          background:
-            "radial-gradient(55% 55% at 50% 35%, var(--red-accent) 0%, transparent 60%), radial-gradient(38% 38% at 50% 30%, var(--red-deep) 0%, transparent 65%)",
-          opacity: 0.75,
-          mixBlendMode: "screen",
         }}
       />
       {/* Glow radial vermelho intenso atrás do apresentador (desktop) */}

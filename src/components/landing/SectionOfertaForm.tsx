@@ -176,8 +176,8 @@ export function SectionOfertaForm({
               </div>
             </div>
 
-            <div className="relative">
-              <h3 className="whitespace-pre-line pr-20 font-sans text-2xl font-semibold leading-tight">
+            <div className="relative text-center">
+              <h3 className="whitespace-pre-line px-2 font-sans text-2xl font-semibold leading-tight">
                 {section.cardOferta.nome}
               </h3>
 
@@ -189,9 +189,9 @@ export function SectionOfertaForm({
               </div>
 
               {inclui.length > 0 && (
-                <ul className="mt-6 space-y-2.5">
+                <ul className="mt-6 inline-flex flex-col items-start gap-2.5 text-left text-sm">
                   {inclui.map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-sm">
+                    <li key={item} className="flex items-start gap-2.5">
                       <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-accent/20 text-red-accent">
                         <Check className="h-3 w-3" aria-hidden />
                       </span>

@@ -75,7 +75,7 @@ export function Hero(props: HeroProps) {
           <span className="hidden md:inline-block rounded-pill border border-red-accent/60 bg-red-accent/20 px-4 py-2 text-[14px] font-bold uppercase tracking-[0.06em] text-on-red shadow-[0_2px_12px_rgba(0,0,0,0.4)] md:text-[11px] md:font-semibold md:tracking-widest md:py-1 md:px-3 md:bg-red-accent/10 md:text-red-accent">
             {props.badge}
           </span>
-          <h1 className="mt-5 whitespace-pre-line font-display font-semibold text-section-dark-fg text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.15] [text-wrap:balance] md:mt-3 md:text-[clamp(1.75rem,3.4vw,2.6rem)] md:leading-[1.08]" style={{ textShadow: "var(--text-shadow-hero)" }}>
+          <h1 className="mt-5 whitespace-pre-line font-display font-semibold text-section-dark-fg text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.15] md:mt-3 md:text-[clamp(1.75rem,3.4vw,2.6rem)] md:leading-[1.08]" style={{ textShadow: "var(--text-shadow-hero)" }}>
             {props.h1}
           </h1>
           {props.subtituloMobile && (

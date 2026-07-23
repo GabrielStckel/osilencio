@@ -39,7 +39,7 @@ export function SectionComoFunciona({ fundo, titulo, cards, texto }: Props) {
             </span>
           </Reveal>
           <Reveal>
-            <h2 className="font-display text-[clamp(2.5rem,7vw,4.5rem)] font-bold leading-[1.05] text-balance">
+            <h2 className="font-display font-semibold leading-[1.08] text-balance text-[clamp(1.6rem,6.8vw,2.35rem)] md:text-[clamp(1.75rem,3.4vw,2.6rem)]">
               {titulo}
             </h2>
           </Reveal>

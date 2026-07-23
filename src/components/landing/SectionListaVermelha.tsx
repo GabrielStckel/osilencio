@@ -22,7 +22,7 @@ export function SectionListaVermelha({ fundo, titulo, itens, fechamento }: Props
             <span className="block text-[11px] font-semibold uppercase tracking-[0.2em] opacity-70">
               O que você vai entender
             </span>
-            <h2 className="mt-3 font-display text-[clamp(1.75rem,5vw,2.25rem)] font-semibold leading-[1.05] md:text-[clamp(1.9rem,3.4vw,2.6rem)]">
+            <h2 className="mt-3 font-display font-semibold leading-[1.08] text-[clamp(1.6rem,6.8vw,2.35rem)] md:text-[clamp(1.75rem,3.4vw,2.6rem)]">
               {titulo}
             </h2>
             <p className="mt-6 hidden text-[15px] leading-relaxed opacity-85 md:block">

@@ -26,7 +26,7 @@ function Pilula({ icon, label }: HeroPilula) {
 
 export function Hero(props: HeroProps) {
   return (
-    <section className="relative overflow-hidden bg-section-dark-bg px-5 pb-10 pt-24 text-section-dark-fg min-h-[100svh] md:min-h-[88vh] md:px-0 md:py-0 md:pb-0 md:pt-[6.5rem]">
+    <section className="relative overflow-hidden bg-section-dark-bg px-5 pb-10 pt-40 text-section-dark-fg min-h-[100svh] md:min-h-[88vh] md:px-0 md:py-0 md:pb-0 md:pt-[6.5rem]">
       {/* Imagem de fundo mobile */}
       <img
         src={apresentador540Webp.url}

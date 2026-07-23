@@ -101,6 +101,8 @@
   --text-on-dark: oklch(0.9538 0.0080 73.74);   /* #F3EFEA */
   --text-on-light: oklch(0.1873 0.0102 52.83);  /* #17120F */
   --text-muted-value: oklch(0.6067 0.0161 57.43); /* #8A8079 */
+  --text-shadow-hero: 0 2px 12px rgba(0,0,0,0.75), 0 1px 3px rgba(0,0,0,0.9);
+  --text-shadow-hero-strong: 0 3px 16px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.95);
 
   /* Vermelhos controlados */
   --red-primary: oklch(0.5262 0.1842 27.69);    /* #BE2B26 */

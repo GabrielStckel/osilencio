@@ -58,21 +58,21 @@ export function Hero(props: HeroProps) {
       <div className="relative mx-auto grid w-full max-w-6xl items-start gap-10 px-5 pt-[340px] sm:px-8 sm:pt-[360px] md:grid-cols-12 md:gap-6 md:pt-0">
         {/* Coluna texto */}
         <div className="relative z-10 md:col-span-6 md:pr-4">
-          <span className="inline-block rounded-pill border border-red-accent/60 bg-red-accent/20 px-4 py-2 text-[14px] font-bold uppercase tracking-[0.06em] text-on-red md:text-[11px] md:font-semibold md:tracking-widest md:py-1 md:px-3 md:bg-red-accent/10 md:text-red-accent">
+          <span className="inline-block rounded-pill border border-red-accent/60 bg-red-accent/20 px-4 py-2 text-[14px] font-bold uppercase tracking-[0.06em] text-on-red shadow-[0_2px_12px_rgba(0,0,0,0.4)] md:text-[11px] md:font-semibold md:tracking-widest md:py-1 md:px-3 md:bg-red-accent/10 md:text-red-accent">
             {props.badge}
           </span>
-          <h1 className="mt-5 whitespace-pre-line font-display font-semibold leading-[1.08] text-section-dark-fg text-[clamp(1.6rem,6.8vw,2.35rem)] md:mt-3 md:text-[clamp(1.75rem,3.4vw,2.6rem)] md:leading-[1.08]">
+          <h1 className="mt-5 whitespace-pre-line font-display font-semibold leading-[1.08] text-section-dark-fg text-[clamp(1.6rem,6.8vw,2.35rem)] md:mt-3 md:text-[clamp(1.75rem,3.4vw,2.6rem)] md:leading-[1.08]" style={{ textShadow: "var(--text-shadow-hero)" }}>
             {props.h1}
           </h1>
           {props.subtituloMobile && (
-            <p className="md:hidden mt-4 text-justify text-[15px] leading-[1.55] text-section-dark-fg/85">
+            <p className="md:hidden mt-4 text-justify text-[15px] leading-[1.55] text-section-dark-fg/85" style={{ textShadow: "var(--text-shadow-hero)" }}>
               {props.subtituloMobile}
             </p>
           )}
-          <p className="hidden md:mt-3 md:block md:text-[15px] md:leading-[1.55] text-section-dark-fg/85">
+          <p className="hidden md:mt-3 md:block md:text-[15px] md:leading-[1.55] text-section-dark-fg/85" style={{ textShadow: "var(--text-shadow-hero)" }}>
             {props.subtitulo}
           </p>
-          <p className="hidden md:mt-2 md:block md:text-[15px] md:leading-[1.55] text-section-dark-fg/70">
+          <p className="hidden md:mt-2 md:block md:text-[15px] md:leading-[1.55] text-section-dark-fg/70" style={{ textShadow: "var(--text-shadow-hero)" }}>
             {props.apoio}
           </p>
 

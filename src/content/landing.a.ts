@@ -119,7 +119,7 @@ export const landingContentA: LandingContent = {
         inclui: "Acesso às 2 noites ao vivo pelo Zoom",
       },
       cta: "INSCREVER-SE AGORA — R$ 47",
-      urgencia: "Vagas limitadas. Não deixe para depois.",
+      urgencia: "Vagas limitadas · Inscrições encerram em 10 de agosto.",
     },
     {
       kind: "faq",

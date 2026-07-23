@@ -139,9 +139,15 @@ export function SectionOfertaForm({
         </Reveal>
       </div>
 
-      <div className="mx-auto mt-12 max-w-xl md:mt-16">
+      <div className="mx-auto mt-12 grid max-w-6xl items-center gap-14 md:mt-16 md:grid-cols-2 md:gap-10 lg:gap-16">
         <Reveal>
-          <article className="relative rounded-xl border-2 border-red-accent/60 bg-surface-dark/70 p-7 shadow-2xl shadow-red-deep/40 sm:p-8">
+          <div className="pb-8 md:pb-10">
+            <DeviceMockups />
+          </div>
+        </Reveal>
+
+        <Reveal>
+          <article className="relative mx-auto w-full max-w-xl rounded-xl border-2 border-red-accent/60 bg-surface-dark/70 p-7 shadow-2xl shadow-red-deep/40 sm:p-8">
             <span className="absolute -top-3 left-6 inline-flex items-center rounded-pill bg-red-accent px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-on-red shadow-md shadow-red-deep/50">
               Oferta
             </span>

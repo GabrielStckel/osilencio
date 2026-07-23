@@ -133,6 +133,7 @@ function Preco({ valor }: { valor: string }) {
 
 export function SectionOfertaForm({
   section,
+  variante,
   checkoutUrl,
 }: {
   section: Props;
@@ -141,6 +142,8 @@ export function SectionOfertaForm({
 }) {
   const inclui = [section.cardOferta.inclui].filter(Boolean);
   const href = checkoutUrl ?? CHECKOUT_URL;
+  const pill = variante === "B" ? "Oferta exclusiva para membros do ACS" : "Imersão · 2 noites ao vivo";
+
   return (
     <SectionShell fundo={section.fundo} id="oferta">
 

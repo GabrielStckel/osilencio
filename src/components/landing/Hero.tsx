@@ -150,41 +150,23 @@ export function Hero(props: HeroProps) {
               <source type="image/webp" srcSet={WEBP_SRCSET} sizes={IMG_SIZES} />
               <img
                 src={props.imagem.src}
+                width={props.imagem.width}
+                height={props.imagem.height}
+                alt={props.imagem.alt}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-contain object-right-bottom"
+                style={{
+                  WebkitMaskImage:
+                    "radial-gradient(75% 100% at 50% 0%, black 35%, transparent 80%)",
+                  maskImage:
+                    "radial-gradient(75% 100% at 50% 0%, black 35%, transparent 80%)",
+                  zIndex: 1,
+                }}
+              />
+            </picture>
 
-              width={props.imagem.width}
-              height={props.imagem.height}
-              alt=""
-              aria-hidden
-              loading="eager"
-              className="absolute inset-0 h-full w-full object-contain object-right-bottom"
-              style={{
-                filter: "blur(50px) brightness(0.25) saturate(0)",
-                opacity: 0.35,
-                transform: "translateY(28px) scale(1.12)",
-                WebkitMaskImage:
-                  "radial-gradient(75% 100% at 50% 0%, black 35%, transparent 80%)",
-                maskImage:
-                  "radial-gradient(75% 100% at 50% 0%, black 35%, transparent 80%)",
-                zIndex: 0,
-              }}
-            />
-            <img
-              src={props.imagem.src}
-              width={props.imagem.width}
-              height={props.imagem.height}
-              alt={props.imagem.alt}
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-              className="absolute inset-0 h-full w-full object-contain object-right-bottom"
-              style={{
-                WebkitMaskImage:
-                  "radial-gradient(75% 100% at 50% 0%, black 35%, transparent 80%)",
-                maskImage:
-                  "radial-gradient(75% 100% at 50% 0%, black 35%, transparent 80%)",
-                zIndex: 1,
-              }}
-            />
           </div>
         </div>
       </div>

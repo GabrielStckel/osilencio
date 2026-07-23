@@ -26,7 +26,20 @@ function Pilula({ icon, label }: HeroPilula) {
 
 export function Hero(props: HeroProps) {
   return (
-    <section className="relative overflow-hidden bg-section-dark-bg px-5 pb-6 pt-24 text-section-dark-fg md:min-h-[88vh] md:px-0 md:py-0 md:pb-0 md:pt-[6.5rem]">
+    <section className="relative overflow-hidden bg-section-dark-bg px-5 pb-10 pt-24 text-section-dark-fg min-h-[100svh] md:min-h-[88vh] md:px-0 md:py-0 md:pb-0 md:pt-[6.5rem]">
+      {/* Imagem de fundo mobile */}
+      <img
+        src={apresentador540Webp.url}
+        alt=""
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover object-top md:hidden"
+      />
+      {/* Overlay mobile para legibilidade */}
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/75 to-black md:hidden"
+      />
+
       {/* Base gradiente sutil para dar profundidade sem apagar (desktop) */}
       <div
         aria-hidden
@@ -56,17 +69,17 @@ export function Hero(props: HeroProps) {
         }}
       />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center md:grid md:px-8 md:grid-cols-12 md:items-start md:gap-6">
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl items-start gap-10 md:px-8 md:grid-cols-12 md:gap-6">
         {/* Coluna texto */}
-        <div className="relative z-10 w-full md:col-span-6 md:pr-4">
+        <div className="relative z-10 md:col-span-6 md:pr-4">
           <span className="hidden md:inline-block rounded-pill border border-red-accent/60 bg-red-accent/20 px-4 py-2 text-[14px] font-bold uppercase tracking-[0.06em] text-on-red shadow-[0_2px_12px_rgba(0,0,0,0.4)] md:text-[11px] md:font-semibold md:tracking-widest md:py-1 md:px-3 md:bg-red-accent/10 md:text-red-accent">
             {props.badge}
           </span>
-          <h1 className="mt-5 whitespace-pre-line text-center font-display font-semibold text-section-dark-fg text-[clamp(1.45rem,6.2vw,1.85rem)] leading-[1.15] [text-wrap:balance] md:mt-3 md:text-left md:text-[clamp(1.75rem,3.4vw,2.6rem)] md:leading-[1.08]" style={{ textShadow: "var(--text-shadow-hero)" }}>
+          <h1 className="mt-5 whitespace-pre-line font-display font-semibold text-section-dark-fg text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.15] md:mt-3 md:text-[clamp(1.75rem,3.4vw,2.6rem)] md:leading-[1.08]" style={{ textShadow: "var(--text-shadow-hero)" }}>
             {props.h1}
           </h1>
           {props.subtituloMobile && (
-            <p className="md:hidden mt-4 text-center text-[15px] leading-relaxed text-section-dark-fg/85" style={{ textShadow: "var(--text-shadow-hero)" }}>
+            <p className="md:hidden mt-4 text-left max-w-none text-[15px] leading-relaxed text-section-dark-fg/85" style={{ textShadow: "var(--text-shadow-hero)" }}>
               {props.subtituloMobile}
             </p>
           )}
@@ -77,7 +90,7 @@ export function Hero(props: HeroProps) {
             {props.apoio}
           </p>
 
-          <div className="mx-auto mt-7 w-full max-w-[420px] md:mx-0 md:mt-5 md:max-w-[380px]">
+          <div className="mt-7 w-full max-w-[420px] md:mt-5 md:max-w-[380px]">
             <a
               href={CHECKOUT_URL}
               className="flex w-full min-h-[56px] items-center justify-center gap-2 rounded-cta bg-red-primary px-6 py-4 text-base font-bold uppercase tracking-wide text-on-red shadow-lg shadow-red-deep/40 transition-colors whitespace-nowrap hover:bg-red-primary-hover md:text-[15px]"
@@ -90,37 +103,13 @@ export function Hero(props: HeroProps) {
             </div>
           </div>
 
-          <ul className="mt-8 flex flex-wrap justify-center gap-2 text-xs md:justify-start md:mt-4">
+          <ul className="mt-8 flex flex-wrap justify-start gap-2 text-xs md:mt-4">
             {props.pilulas.map((p) => (
               <li key={p.label} className={p.hiddenMobile ? "hidden md:block" : ""}>
                 <Pilula {...p} />
               </li>
             ))}
           </ul>
-        </div>
-
-        {/* Imagem mobile posicionada abaixo do texto */}
-        <div className="relative mt-6 w-full md:hidden">
-          <div className="relative mx-auto h-[45vh] w-full max-w-sm">
-            <div
-              aria-hidden
-              className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-section-dark-bg to-transparent"
-            />
-            <picture>
-              <source type="image/avif" srcSet={AVIF_SRCSET} sizes={IMG_SIZES} />
-              <source type="image/webp" srcSet={WEBP_SRCSET} sizes={IMG_SIZES} />
-              <img
-                src={props.imagem.src}
-                width={props.imagem.width}
-                height={props.imagem.height}
-                alt={props.imagem.alt}
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-                className="h-full w-full object-contain object-bottom"
-              />
-            </picture>
-          </div>
         </div>
 
         {/* Imagem desktop preservada */}

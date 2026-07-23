@@ -95,6 +95,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       {
         rel: "preload",
+        as: "image",
+        href: apresentador1080Avif.url,
+        type: "image/avif",
+        imageSrcSet: `${apresentador540Avif.url} 540w, ${apresentador1080Avif.url} 1080w`,
+        imageSizes: "(max-width: 768px) 90vw, 520px",
+        fetchPriority: "high",
+      },
+      {
+        rel: "preload",
         href: lora700Url,
         as: "font",
         type: "font/woff2",

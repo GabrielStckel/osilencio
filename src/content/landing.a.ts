@@ -25,6 +25,7 @@ export const landingContentA: LandingContent = {
       "Existe uma razão profunda pela qual sua mente não consegue descansar. E existe uma solução que realmente funciona. Junte-se a nós em uma Imersão de 2 Noites onde você vai descobrir por que sua mente funciona assim — e como mudar isso para sempre.",
     subtituloMobile:
       "Sua mente não para, e você já tentou de tudo — meditação, terapia, remédios — sem resultado real, porque o problema não é o sintoma, é a causa. Nesta Imersão de 2 Noites você vai descobrir por que sua mente funciona assim e como mudar isso para sempre.",
+    datas: "11 e 12 de agosto · 19h30 às 21h30 (Brasília)",
     cta: "Garantir minha vaga - R$ 47",
     microtexto: "Vagas limitadas a 150 pessoas.",
     pilulas: [

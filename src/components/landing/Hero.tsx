@@ -97,22 +97,26 @@ export function Hero(props: HeroProps) {
         {/* Imagem mobile: presença ampla, rosto livre acima do título */}
         <div className="absolute inset-x-0 top-0 z-0 h-[560px] overflow-hidden md:hidden">
           <div className="relative h-full w-full">
-            <img
-              src={props.imagem.src}
-              width={props.imagem.width}
-              height={props.imagem.height}
-              alt={props.imagem.alt}
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-              className="absolute left-[54%] top-0 h-auto w-[520px] max-w-none -translate-x-1/2"
-              style={{
-                WebkitMaskImage:
-                   "linear-gradient(to bottom, black 0px, black 260px, rgba(0,0,0,0.92) 310px, rgba(0,0,0,0.55) 390px, rgba(0,0,0,0.16) 475px, transparent 545px)",
-                maskImage:
-                   "linear-gradient(to bottom, black 0px, black 260px, rgba(0,0,0,0.92) 310px, rgba(0,0,0,0.55) 390px, rgba(0,0,0,0.16) 475px, transparent 545px)",
-              }}
-            />
+            <picture>
+              <source type="image/avif" srcSet={AVIF_SRCSET} sizes={IMG_SIZES} />
+              <source type="image/webp" srcSet={WEBP_SRCSET} sizes={IMG_SIZES} />
+              <img
+                src={props.imagem.src}
+                width={props.imagem.width}
+                height={props.imagem.height}
+                alt={props.imagem.alt}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="absolute left-[54%] top-0 h-auto w-[520px] max-w-none -translate-x-1/2"
+                style={{
+                  WebkitMaskImage:
+                     "linear-gradient(to bottom, black 0px, black 260px, rgba(0,0,0,0.92) 310px, rgba(0,0,0,0.55) 390px, rgba(0,0,0,0.16) 475px, transparent 545px)",
+                  maskImage:
+                     "linear-gradient(to bottom, black 0px, black 260px, rgba(0,0,0,0.92) 310px, rgba(0,0,0,0.55) 390px, rgba(0,0,0,0.16) 475px, transparent 545px)",
+                }}
+              />
+            </picture>
 
           </div>
         </div>
@@ -123,7 +127,30 @@ export function Hero(props: HeroProps) {
           <div className="relative ml-auto h-[100vh] w-full">
             {/* Sombra da foto projetada no fundo do hero */}
             <img
-              src={props.imagem.src}
+              src={apresentador1080Avif.url}
+              width={props.imagem.width}
+              height={props.imagem.height}
+              alt=""
+              aria-hidden
+              loading="eager"
+              className="absolute inset-0 h-full w-full object-contain object-right-bottom"
+              style={{
+                filter: "blur(50px) brightness(0.25) saturate(0)",
+                opacity: 0.35,
+                transform: "translateY(28px) scale(1.12)",
+                WebkitMaskImage:
+                  "radial-gradient(75% 100% at 50% 0%, black 35%, transparent 80%)",
+                maskImage:
+                  "radial-gradient(75% 100% at 50% 0%, black 35%, transparent 80%)",
+                zIndex: 0,
+              }}
+            />
+            <picture>
+              <source type="image/avif" srcSet={AVIF_SRCSET} sizes={IMG_SIZES} />
+              <source type="image/webp" srcSet={WEBP_SRCSET} sizes={IMG_SIZES} />
+              <img
+                src={props.imagem.src}
+
               width={props.imagem.width}
               height={props.imagem.height}
               alt=""

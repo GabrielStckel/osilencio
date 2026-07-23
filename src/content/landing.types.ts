@@ -85,6 +85,7 @@ export type SectionOfertaForm = {
     nome: string;
     preco: string;
     inclui: string;
+    datas?: string;
   };
   cta: string;
   urgencia: string;

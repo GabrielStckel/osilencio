@@ -166,7 +166,7 @@ export function SectionOfertaForm({
     <SectionShell fundo={section.fundo} id="inscricao">
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
-          <h2 className="mx-auto max-w-2xl whitespace-pre-line font-display font-semibold leading-[1.18] text-[clamp(1.5rem,3.5vw,2rem)]">
+          <h2 className="mx-auto max-w-[18ch] whitespace-pre-line font-display font-semibold leading-[1.12] text-[clamp(1.75rem,4.2vw,2.5rem)]">
             {section.titulo}
           </h2>
         </Reveal>

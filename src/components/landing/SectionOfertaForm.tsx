@@ -104,6 +104,7 @@ function DeviceMockups() {
           <div className="relative h-full w-full overflow-hidden rounded-[19px] bg-black">
             {/* Notch */}
             <div className="absolute left-1/2 top-1.5 z-10 h-3 w-12 -translate-x-1/2 rounded-full bg-black/90" />
+            {/* Palestrante em tela cheia */}
             <picture>
               <source type="image/avif" srcSet={apresentador540Avif.url} />
               <source type="image/webp" srcSet={apresentador540Webp.url} />
@@ -117,13 +118,23 @@ function DeviceMockups() {
                 className="absolute inset-0 h-full w-full object-cover"
               />
             </picture>
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(100%_70%_at_50%_40%,transparent_50%,rgba(0,0,0,0.8)_100%)]" />
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent_50%,rgba(0,0,0,0.85)_100%)]" />
+            {/* Slide flutuante */}
+            <div className="absolute bottom-8 left-1.5 right-1.5 rounded-md border border-white/10 bg-black/75 p-1.5 backdrop-blur-sm">
+              <div className="font-sans text-[6px] font-semibold uppercase tracking-widest text-red-accent">
+                Aula 01
+              </div>
+              <div className="mt-0.5 font-display text-[8px] font-semibold leading-tight text-white">
+                Por que sua mente não desliga
+              </div>
+            </div>
             <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 rounded-full bg-red-accent px-2 py-0.5 font-sans text-[8px] font-bold uppercase tracking-wider text-on-red">
               Ao vivo
             </div>
           </div>
         </div>
       </div>
+
     </div>
   );
 }

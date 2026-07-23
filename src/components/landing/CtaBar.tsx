@@ -51,7 +51,7 @@ export function CtaBar({ label }: Props) {
     >
       <div className="mx-auto flex w-full max-w-6xl items-center justify-center px-4 py-3 sm:px-8">
         <a
-          href={CHECKOUT_URL}
+          href="#oferta"
           className="inline-flex min-h-[48px] w-full items-center justify-center rounded-cta bg-red-primary px-6 text-sm font-bold uppercase tracking-wide text-on-red transition-colors hover:bg-red-primary-hover sm:w-auto sm:min-w-[360px]"
         >
           {label}

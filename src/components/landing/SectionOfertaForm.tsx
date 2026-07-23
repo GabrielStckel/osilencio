@@ -2,6 +2,7 @@ import { Check } from "lucide-react";
 import type { SectionOfertaForm as Props, Variante } from "@/content/landing.types";
 import { CHECKOUT_URL } from "@/lib/config";
 import { Reveal } from "./Reveal";
+import { ReservationProgress } from "@/components/ReservationProgress";
 import { SectionShell } from "./SectionShell";
 import apresentador540Avif from "@/assets/apresentador-540.avif.asset.json";
 import apresentador1080Avif from "@/assets/apresentador-1080.avif.asset.json";

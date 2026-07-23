@@ -118,6 +118,7 @@ export const landingContentA: LandingContent = {
         nome: "Imersão O Silêncio — \u00a0\n2 Noites ao Vivo",
         preco: "R$ 47,00",
         inclui: "Acesso às 2 noites ao vivo pelo Zoom",
+        datas: "11 e 12 de agosto · 19h30 às 21h30 (Brasília)",
       },
       cta: "INSCREVER-SE AGORA — R$ 47",
       urgencia: "Vagas limitadas · Inscrições encerram em 10 de agosto.",

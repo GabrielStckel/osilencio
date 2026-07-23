@@ -133,13 +133,17 @@ function Preco({ valor }: { valor: string }) {
 
 export function SectionOfertaForm({
   section,
+  checkoutUrl,
 }: {
   section: Props;
   variante: Variante;
+  checkoutUrl?: string;
 }) {
   const inclui = [section.cardOferta.inclui].filter(Boolean);
+  const href = checkoutUrl ?? CHECKOUT_URL;
   return (
     <SectionShell fundo={section.fundo} id="oferta">
+
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
           <span className="inline-block rounded-pill border border-red-accent/40 bg-red-accent/10 px-3 py-1 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-red-accent">

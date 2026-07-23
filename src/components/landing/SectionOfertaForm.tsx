@@ -39,7 +39,7 @@ function DeviceMockups() {
               </span>
             </div>
             {/* Palco da palestra */}
-            <div className="relative grid h-[calc(100%-28px)] w-full grid-cols-[62%_38%]">
+            <div className="relative grid h-[calc(100%-28px)] w-full grid-cols-[70%_30%]">
               {/* Slide da palestra */}
               <div className="relative overflow-hidden bg-gradient-to-br from-neutral-950 via-neutral-900 to-black p-3">
                 <div className="font-sans text-[8px] font-semibold uppercase tracking-[0.18em] text-red-accent">
@@ -59,34 +59,9 @@ function DeviceMockups() {
                 <div className="absolute -bottom-6 -right-6 h-16 w-16 rounded-full bg-red-accent/20 blur-2xl" />
               </div>
 
-              {/* Câmera do palestrante */}
-              <div className="relative overflow-hidden border-l border-white/10 bg-black">
-                <picture>
-                  <source
-                    type="image/avif"
-                    srcSet={`${apresentador540Avif.url} 540w, ${apresentador1080Avif.url} 1080w`}
-                    sizes="220px"
-                  />
-                  <source
-                    type="image/webp"
-                    srcSet={`${apresentador540Webp.url} 540w, ${apresentador1080Webp.url} 1080w`}
-                    sizes="220px"
-                  />
-                  <img
-                    src={apresentador540Webp.url}
-                    alt=""
-                    width={1080}
-                    height={1920}
-                    loading="lazy"
-                    decoding="async"
-                    className="absolute left-1/2 top-0 h-full w-auto max-w-none -translate-x-1/2 object-cover"
-                  />
-                </picture>
+              {/* Área escura para o celular sobrepor */}
+              <div className="relative overflow-hidden border-l border-white/10 bg-gradient-to-br from-black via-neutral-950 to-black">
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_80%_at_50%_40%,transparent_45%,rgba(0,0,0,0.75)_100%)]" />
-                <div className="absolute bottom-1.5 left-1.5 right-1.5 flex items-center gap-1 rounded bg-black/70 px-1.5 py-0.5 font-sans text-[8px] font-medium tracking-wide text-white/90">
-                  <span className="h-1 w-1 rounded-full bg-red-accent" />
-                  Vinicius · falando
-                </div>
               </div>
             </div>
 
@@ -99,7 +74,7 @@ function DeviceMockups() {
       </div>
 
       {/* Celular sobreposto */}
-      <div className="absolute -bottom-6 -right-2 w-[28%] min-w-[110px] sm:-right-4 sm:w-[30%]">
+      <div className="absolute top-[15%] right-[-4%] z-10 w-[42%] min-w-[150px] sm:right-[-6%] sm:w-[48%]">
         <div className="relative aspect-[9/19] w-full rounded-[22px] border border-white/20 bg-neutral-900 p-[3px] shadow-2xl shadow-black/70">
           <div className="relative h-full w-full overflow-hidden rounded-[19px] bg-black">
             {/* Notch */}

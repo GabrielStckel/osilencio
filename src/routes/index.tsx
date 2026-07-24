@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Landing } from "@/components/landing/Landing";
+import { MetaPixel } from "@/components/MetaPixel";
 import { landingContentA } from "@/content/landing.a";
 
 export const Route = createFileRoute("/")({
@@ -21,5 +22,10 @@ export const Route = createFileRoute("/")({
 });
 
 function IndexPage() {
-  return <Landing content={landingContentA} />;
+  return (
+    <>
+      <MetaPixel pixelId="489930819102829" />
+      <Landing content={landingContentA} />
+    </>
+  );
 }

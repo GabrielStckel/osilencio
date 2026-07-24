@@ -181,6 +181,6 @@ export const landingContentB: LandingContent = {
   ctaBar: {
     label: "GARANTIR MINHA VAGA — R$ 27",
   },
-  checkoutUrl: "https://pay.hotmart.com/R106856311C?checkoutMode=10&_gl=1*1koti2d*_gcl_au*MTQxOTM0MjI0NS4xNzg0ODQ2OTM4*FPAU*MTQxOTM0MjI0NS4xNzg0ODQ2OTM4*_ga*MTk3NzczODExNC4xNzY5MjY1MDk2*_ga_GQH2V1F11Q*czE3ODQ4NTEwNzIkbzIwOSRnMSR0MTc4NDg1MTQ0OCRqMjckbDAkaDc4MzU4MDY2&bid=1784851451046",
+  checkoutUrl: "https://pay.hotmart.com/R106856311C?off=dfh6fyu2&checkoutMode=10&_gl=1*1h28wki*_gcl_au*MTQxOTM0MjI0NS4xNzg0ODQ2OTM4*FPAU*MTQxOTM0MjI0NS4xNzg0ODQ2OTM4*_ga*MTk3NzczODExNC4xNzY5MjY1MDk2*_ga_GQH2V1F11Q*czE3ODQ4NTEwNzIkbzIwOSRnMSR0MTc4NDg1MjQxMCRqMTYkbDAkaDc4MzU4MDY2&bid=1784852414195",
 };
 

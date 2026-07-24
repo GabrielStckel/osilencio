@@ -181,6 +181,6 @@ export const landingContentB: LandingContent = {
   ctaBar: {
     label: "GARANTIR MINHA VAGA — R$ 27",
   },
-  checkoutUrl: "https://pay.hotmart.com/R106856311C?off=dfh6fyu2",
+  checkoutUrl: "https://pay.hotmart.com/R106856311C?off=dfh6fyu2&checkoutMode=10",
 };
 

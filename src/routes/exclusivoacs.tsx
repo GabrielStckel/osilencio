@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Landing } from "@/components/landing/Landing";
+import { PromoEncerradaModal } from "@/components/PromoEncerradaModal";
 import { landingContentB } from "@/content/landing.b";
 
 export const Route = createFileRoute("/exclusivoacs")({
@@ -22,5 +24,24 @@ export const Route = createFileRoute("/exclusivoacs")({
 });
 
 function ExclusivoAcsPage() {
-  return <Landing content={landingContentB} />;
+  const [modalOpen, setModalOpen] = useState(true);
+
+  const handleCapture = (e: React.MouseEvent) => {
+    const el = (e.target as HTMLElement).closest("a, button");
+    if (!el) return;
+    if (el.closest("[data-promo-modal]")) return;
+    if (el.closest('[id^="faq-btn-"]')) return;
+    e.preventDefault();
+    e.stopPropagation();
+    setModalOpen(true);
+  };
+
+  return (
+    <>
+      <div onClickCapture={handleCapture}>
+        <Landing content={landingContentB} />
+      </div>
+      <PromoEncerradaModal open={modalOpen} onClose={() => setModalOpen(false)} />
+    </>
+  );
 }

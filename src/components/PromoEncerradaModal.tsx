@@ -60,7 +60,7 @@ export function PromoEncerradaModal({ open, onClose }: Props) {
           A promoção acabou
         </h2>
         <p className="mt-3 font-sans text-sm leading-relaxed text-foreground/80">
-          O valor promocional de R$ 27 era válido apenas até 26 de agosto.
+          O valor promocional de R$ 27 era válido apenas até 26 de julho.
           As inscrições para a imersão continuam abertas pelo valor normal,
           com as mesmas 2 noites ao vivo.
         </p>

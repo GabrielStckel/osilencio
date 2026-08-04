@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ListaRouteImport } from './routes/lista'
 import { Route as ExclusivoacsRouteImport } from './routes/exclusivoacs'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ListaRoute = ListaRouteImport.update({
+  id: '/lista',
+  path: '/lista',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ExclusivoacsRoute = ExclusivoacsRouteImport.update({
   id: '/exclusivoacs',
   path: '/exclusivoacs',
@@ -26,31 +32,42 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/exclusivoacs': typeof ExclusivoacsRoute
+  '/lista': typeof ListaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/exclusivoacs': typeof ExclusivoacsRoute
+  '/lista': typeof ListaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/exclusivoacs': typeof ExclusivoacsRoute
+  '/lista': typeof ListaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/exclusivoacs'
+  fullPaths: '/' | '/exclusivoacs' | '/lista'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/exclusivoacs'
-  id: '__root__' | '/' | '/exclusivoacs'
+  to: '/' | '/exclusivoacs' | '/lista'
+  id: '__root__' | '/' | '/exclusivoacs' | '/lista'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ExclusivoacsRoute: typeof ExclusivoacsRoute
+  ListaRoute: typeof ListaRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/lista': {
+      id: '/lista'
+      path: '/lista'
+      fullPath: '/lista'
+      preLoaderRoute: typeof ListaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/exclusivoacs': {
       id: '/exclusivoacs'
       path: '/exclusivoacs'
@@ -71,17 +88,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ExclusivoacsRoute: ExclusivoacsRoute,
+  ListaRoute: ListaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

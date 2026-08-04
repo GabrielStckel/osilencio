@@ -1,53 +1,30 @@
-## Objetivo
-Adicionar modal "promoção encerrada" que abre imediatamente ao entrar em `/exclusivoacs` e intercepta qualquer clique em CTA/link/botão da página (inclusive checkout Hotmart), sem tocar em nada compartilhado.
+# Rota /lista com checkout rastreado (sck=wpp-lista)
 
-## Arquivos
+## O que encontrei hoje
 
-**Novo:** `src/components/PromoEncerradaModal.tsx`
-- Props: `open: boolean`, `onClose: () => void`.
-- Não usa lib nova. Implementação com `div` fixa + overlay (mais leve que trazer Dialog do shadcn e evita mexer em `ui/`).
-- Overlay preto semi-transparente, sem blur.
-- Fecha em: clique no overlay, botão "X", tecla `Esc`.
-- Trava scroll do body (`document.body.style.overflow = "hidden"`) e restaura no cleanup.
-- `role="dialog"`, `aria-modal="true"`, `aria-labelledby`, foco inicial no botão principal via `ref`.
-- Retorna `null` quando `!open`.
-- Fade de 150ms via classe utilitária existente (`animate-in fade-in` do `tw-animate-css` já importado no `styles.css`).
-- Elemento raiz do card com `data-promo-modal`.
-- Tokens usados (validados em `src/styles.css`): `bg-card`, `text-foreground`, `border-primary/30`, `bg-primary text-primary-foreground` no botão, `font-display` no título, `font-sans` no corpo. Card `max-w-[420px]`, `rounded-xl`, `border`, `p-8`, `mx-4`.
-- Botão principal: `w-full`, `uppercase`, `font-semibold`, texto "VER A OFERTA ATUAL"; usa `useNavigate()` do `@tanstack/react-router` → `navigate({ to: "/" })`.
-- Link secundário: `<button>` estilizado como link, texto "Continuar vendo esta página", chama `onClose`.
+- A URL de checkout da rota `/` está em um único lugar: `src/lib/config.ts` (`CHECKOUT_URL = https://pay.hotmart.com/R106856311C?checkoutMode=10`). Não há URL hardcoded espalhada em componentes.
+- Pontos que levam ao checkout na página `/`: **apenas 1 link real** — o botão dentro do card de oferta (`SectionOfertaForm`, usa `checkoutUrl ?? CHECKOUT_URL`). Os demais CTAs (hero, barra fixa inferior, rodapé) são âncoras internas para `#oferta`, não vão direto ao Hotmart. Existe também `LeadForm` (retorna `CHECKOUT_URL` via server function), mas ele **não é renderizado em nenhuma página** hoje.
+- Rotas: TanStack Router file-based em `src/routes/`. `/` = `src/routes/index.tsx` renderiza `<Landing content={landingContentA} />` (+ MetaPixel). `/exclusivoacs` renderiza o mesmo `Landing` com `landingContentB` + modal.
+- `LandingContent` já aceita `checkoutUrl` opcional, que `Landing` repassa para `SectionOfertaForm`. É o mecanismo que a `/exclusivoacs` já usa.
 
-**Alterado:** `src/routes/exclusivoacs.tsx`
-- `const [modalOpen, setModalOpen] = useState(true)`.
-- Estrutura:
-  ```tsx
-  <>
-    <div onClickCapture={handleCapture}>
-      <Landing content={landingContentB} />
-    </div>
-    <PromoEncerradaModal open={modalOpen} onClose={() => setModalOpen(false)} />
-  </>
-  ```
-- `handleCapture` conforme especificado, com uma diferença no seletor do FAQ (ver abaixo).
+## Plano
 
-## FAQ — seletor
-`src/components/landing/SectionFaq.tsx` (compartilhado) NÃO tem `data-faq`. Os botões do acordeão já têm `id="faq-btn-${i}"` estáveis. Uso `el.closest('[id^="faq-btn-"]')` em vez de `[data-faq]`, sem alterar o componente compartilhado.
+1. `src/lib/config.ts`: adicionar `export const CHECKOUT_URL_LISTA = "https://pay.hotmart.com/R106856311C?checkoutMode=10&sck=wpp-lista";` (sem `bid`). `CHECKOUT_URL` fica intacto.
+2. Criar `src/routes/lista.tsx`:
+   - `createFileRoute("/lista")`
+   - renderiza `<Landing content={{ ...landingContentA, checkoutUrl: CHECKOUT_URL_LISTA }} />` — mesmo componente e mesmo arquivo de conteúdo, sem duplicação, sem estado global, sem leitura de query string.
+   - `head()` próprio reaproveitando os textos de `landingContentA.meta`, com `canonical` apontando para `/` e `robots: noindex, nofollow` (é uma variante de tracking, não deve competir na busca).
+   - Sem modal promocional.
+3. Nada muda em `index.tsx`, `exclusivoacs.tsx`, `landing.a.ts`, `landing.b.ts` nem nos componentes de `src/components/landing/`. Preload de imagem e `picture`/AVIF/WebP continuam iguais, pois o componente é o mesmo.
 
-Handler final:
-```ts
-const handleCapture = (e: React.MouseEvent) => {
-  const el = (e.target as HTMLElement).closest("a, button");
-  if (!el) return;
-  if (el.closest("[data-promo-modal]")) return;
-  if (el.closest('[id^="faq-btn-"]')) return;
-  e.preventDefault();
-  e.stopPropagation();
-  setModalOpen(true);
-};
-```
+## Ponto a confirmar
 
-## Não será tocado
-`/`, `landing.a.ts`, `landing.b.ts`, `Landing.tsx`, nada em `src/components/landing/`, `MetaPixel`, `CHECKOUT_URL`, fontes.
+O Meta Pixel hoje está só na `/`. Na `/lista` eu **não** vou incluir o pixel, a menos que você peça — me avise se quiser que ele também dispare lá.
 
-## Verificação
-Após implementar: abrir `/exclusivoacs` no preview, confirmar modal aberto no load, testar ESC/overlay/X, clicar em CTA do hero e da seção oferta (deve reabrir o modal, sem navegar pro Hotmart), abrir/fechar um item do FAQ (deve funcionar normal).
+## Aceite
+
+- `/lista` visualmente idêntica à `/`.
+- Botão de compra da `/lista` → `...?checkoutMode=10&sck=wpp-lista`.
+- Botão de compra da `/` → `...?checkoutMode=10`.
+- `/exclusivoacs` inalterada, com modal.
+- Nenhum link com `bid`.

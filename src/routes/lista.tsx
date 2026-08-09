@@ -1,14 +1,13 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useSearch } from "@tanstack/react-router";
 import { Landing } from "@/components/landing/Landing";
 import { landingContentA } from "@/content/landing.a";
-import { CHECKOUT_URL_LISTA } from "@/lib/config";
 
-const listaContent = { ...landingContentA, checkoutUrl: CHECKOUT_URL_LISTA };
+const CHECKOUT_BASE = "https://pay.hotmart.com/R106856311C?checkoutMode=10";
+const SCK_PADRAO = "wpp-lista";
 
 const CANONICAL = "https://silencio.jonasperess.com.br/";
 
 export const Route = createFileRoute("/lista")({
-  component: ListaPage,
   head: () => ({
     meta: [
       { title: landingContentA.meta.title },
@@ -24,8 +23,19 @@ export const Route = createFileRoute("/lista")({
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
   }),
+  component: ListaPage,
 });
 
 function ListaPage() {
-  return <Landing content={listaContent} />;
+  const { sck } = useSearch({ strict: false });
+
+  const sckLimpo = String(sck ?? "")
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]/g, "")
+    .slice(0, 40);
+
+  const checkoutUrl = `${CHECKOUT_BASE}&sck=${sckLimpo || SCK_PADRAO}`;
+  const content = { ...landingContentA, checkoutUrl };
+
+  return <Landing content={content} />;
 }

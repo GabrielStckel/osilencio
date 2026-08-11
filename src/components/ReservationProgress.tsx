@@ -72,7 +72,7 @@ export function ReservationProgress({ variant = "default" }: Props) {
       </div>
       {!compact && (
         <p className="mt-2 text-[11px] text-white/45">
-          Restam apenas {100 - pct}% das vagas · Encerra 10 de agosto
+          Restam apenas {100 - pct}% das vagas · Encerra 11 de agosto
         </p>
       )}
     </div>

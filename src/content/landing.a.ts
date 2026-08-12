@@ -26,7 +26,7 @@ export const landingContentA: LandingContent = {
     subtituloMobile:
       "Sua mente não para, e você já tentou de tudo — meditação, terapia, remédios — sem resultado real, porque o problema não é o sintoma, é a causa. Nesta Imersão de 2 Noites você vai descobrir por que sua mente funciona assim e como mudar isso para sempre.",
     datas: "11 e 12 de agosto · 19h30 às 21h30",
-    cta: "Garantir minha vaga - R$ 47",
+    cta: "INGRESSOS ESGOTADOS",
     microtexto: "Vagas limitadas a 150 pessoas.",
     pilulas: [
       { icon: "calendar", label: "2 noites ao vivo" },

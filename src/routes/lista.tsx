@@ -27,16 +27,5 @@ export const Route = createFileRoute("/lista")({
 });
 
 function ListaPage() {
-  const search: Record<string, unknown> = useSearch({ strict: false });
-  const sck = search["sck"];
-
-  const sckLimpo = String(sck ?? "")
-    .toLowerCase()
-    .replace(/[^a-z0-9_-]/g, "")
-    .slice(0, 40);
-
-  const checkoutUrl = `${CHECKOUT_BASE}&sck=${sckLimpo || SCK_PADRAO}`;
-  const content = { ...landingContentA, checkoutUrl };
-
-  return <Landing content={content} />;
+  return <Landing content={landingContentA} />;
 }

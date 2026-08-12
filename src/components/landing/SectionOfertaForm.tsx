@@ -1,6 +1,5 @@
 import { Check } from "lucide-react";
 import type { SectionOfertaForm as Props, Variante } from "@/content/landing.types";
-import { CHECKOUT_URL } from "@/lib/config";
 import { Reveal } from "./Reveal";
 import { ReservationProgress } from "@/components/ReservationProgress";
 import { SectionShell } from "./SectionShell";
@@ -134,14 +133,12 @@ function Preco({ valor }: { valor: string }) {
 export function SectionOfertaForm({
   section,
   variante,
-  checkoutUrl,
 }: {
   section: Props;
   variante: Variante;
   checkoutUrl?: string;
 }) {
   const inclui = [section.cardOferta.inclui].filter(Boolean);
-  const href = checkoutUrl ?? CHECKOUT_URL;
   const pill = variante === "B" ? "Oferta exclusiva para membros do ACS" : "Imersão · 2 noites ao vivo";
 
   return (
@@ -223,13 +220,12 @@ export function SectionOfertaForm({
                 </p>
               )}
 
-              <a
-                href={href}
-
+              <button
+                type="button"
                 className="mt-7 inline-flex min-h-[56px] w-full items-center justify-center rounded-cta bg-red-primary px-4 py-4 text-center font-sans text-[13px] font-bold uppercase tracking-wide text-on-red shadow-lg shadow-red-deep/40 transition-all hover:bg-red-primary-hover active:scale-[0.99] md:text-sm md:px-6"
               >
                 {section.cta}
-              </a>
+              </button>
 
               <div className="mt-5 mb-5">
                 <ReservationProgress variant="compact" />

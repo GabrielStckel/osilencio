@@ -41,8 +41,8 @@ export function LeadForm({ variante, cta }: Props) {
     setSubmitting(true);
     try {
       const res = await submit({ data: payload });
-      if (res?.ok && res.checkoutUrl) {
-        window.location.href = res.checkoutUrl;
+      if (res?.ok) {
+        setSubmitting(false);
         return;
       }
       setErrors({ form: "Não foi possível concluir. Tente novamente." });

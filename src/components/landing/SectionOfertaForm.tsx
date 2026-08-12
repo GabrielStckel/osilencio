@@ -1,6 +1,5 @@
 import { Check } from "lucide-react";
 import type { SectionOfertaForm as Props, Variante } from "@/content/landing.types";
-import { CHECKOUT_URL } from "@/lib/config";
 import { Reveal } from "./Reveal";
 import { ReservationProgress } from "@/components/ReservationProgress";
 import { SectionShell } from "./SectionShell";

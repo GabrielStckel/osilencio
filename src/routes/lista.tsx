@@ -27,7 +27,8 @@ export const Route = createFileRoute("/lista")({
 });
 
 function ListaPage() {
-  const { sck } = useSearch({ strict: false });
+  const search: Record<string, unknown> = useSearch({ strict: false });
+  const sck = search["sck"];
 
   const sckLimpo = String(sck ?? "")
     .toLowerCase()

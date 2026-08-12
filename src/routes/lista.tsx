@@ -1,9 +1,7 @@
-import { createFileRoute, useSearch } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { Landing } from "@/components/landing/Landing";
 import { landingContentA } from "@/content/landing.a";
 
-const CHECKOUT_BASE = "https://pay.hotmart.com/R106856311C?checkoutMode=10";
-const SCK_PADRAO = "wpp-lista";
 
 const CANONICAL = "https://silencio.jonasperess.com.br/";
 

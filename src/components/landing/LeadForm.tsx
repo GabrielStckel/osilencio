@@ -42,7 +42,7 @@ export function LeadForm({ variante, cta }: Props) {
     try {
       const res = await submit({ data: payload });
       if (res?.ok && res.checkoutUrl) {
-        window.location.href = res.checkoutUrl;
+        return;
         return;
       }
       setErrors({ form: "Não foi possível concluir. Tente novamente." });
